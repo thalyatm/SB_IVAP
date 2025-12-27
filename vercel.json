@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/ready-to-be-seen", "destination": "/landing-page-1-ready-to-be-seen.html" },
+    { "source": "/more-than-a-prize", "destination": "/landing-page-2-more-than-a-prize.html" },
+    { "source": "/find-your-direction", "destination": "/landing-page-3-find-your-direction.html" }
+  ]
+}
