@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Independent Visions Art Prize | More Than a Prize | Studio on Brunswick</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --off-white: #FDFCFA;
+            --warm-cream: #F7F3ED;
+            --sand: #E9E3D8;
+            --stone: #A69B8D;
+            --earth: #6B5D4D;
+            --deep-charcoal: #2C2824;
+            --rust: #B86B4C;
+            --forest: #5C7A5D;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background-color: var(--off-white);
+            color: var(--deep-charcoal);
+            line-height: 1.65;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr;
+            position: relative;
+        }
+
+        @media (min-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .hero-left {
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: var(--off-white);
+        }
+
+        @media (min-width: 900px) {
+            .hero-left {
+                padding: 4rem 4rem 4rem 6rem;
+            }
+        }
+
+        .hero-right {
+            background: linear-gradient(135deg, var(--sand) 0%, var(--warm-cream) 100%);
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-right::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 1px solid var(--stone);
+            border-radius: 50%;
+            opacity: 0.3;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-right::after {
+            content: '';
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            border: 1px solid var(--stone);
+            border-radius: 50%;
+            opacity: 0.15;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .eyebrow {
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--stone);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 400;
+            line-height: 1.25;
+            margin-bottom: 1.5rem;
+            max-width: 500px;
+        }
+
+        .hero h1 .highlight {
+            color: var(--rust);
+        }
+
+        .hero-text {
+            color: var(--earth);
+            max-width: 420px;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            background-color: var(--deep-charcoal);
+            color: var(--off-white);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            transition: all 0.3s ease;
+        }
+
+        .cta-primary:hover {
+            background-color: var(--rust);
+        }
+
+        .prize-highlight {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .prize-amount {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 400;
+            color: var(--deep-charcoal);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .prize-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--earth);
+        }
+
+        /* Comparison Section */
+        .comparison {
+            padding: 5rem 2rem;
+            background: var(--deep-charcoal);
+            color: var(--off-white);
+        }
+
+        .comparison-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .comparison h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 700px) {
+            .comparison-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .comparison-card {
+            padding: 2.5rem;
+            position: relative;
+        }
+
+        .comparison-card.typical {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .comparison-card.ivap {
+            background: var(--rust);
+        }
+
+        .comparison-card h3 {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            opacity: 0.7;
+        }
+
+        .comparison-card ul {
+            list-style: none;
+        }
+
+        .comparison-card li {
+            padding: 0.6rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .comparison-card.typical li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            opacity: 0.4;
+        }
+
+        .comparison-card.ivap li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+        }
+
+        /* Prize Breakdown */
+        .breakdown {
+            padding: 5rem 2rem;
+            background: var(--warm-cream);
+        }
+
+        .breakdown-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .breakdown h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .breakdown-intro {
+            text-align: center;
+            color: var(--earth);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .prize-tiers {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .prize-tier {
+            background: var(--off-white);
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        @media (min-width: 600px) {
+            .prize-tier {
+                grid-template-columns: 180px 1fr auto;
+            }
+        }
+
+        .tier-name {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.1rem;
+            color: var(--deep-charcoal);
+        }
+
+        .tier-includes {
+            font-size: 0.85rem;
+            color: var(--earth);
+            line-height: 1.7;
+        }
+
+        .tier-value {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.25rem;
+            color: var(--rust);
+            white-space: nowrap;
+        }
+
+        /* What's Included Detail */
+        .included {
+            padding: 5rem 2rem;
+            background: var(--off-white);
+        }
+
+        .included-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .included h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .included-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .included-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .included-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1rem;
+            background: var(--sand);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .included-item h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: var(--deep-charcoal);
+        }
+
+        .included-item p {
+            font-size: 0.85rem;
+            color: var(--stone);
+        }
+
+        /* Testimonial/Quote */
+        .quote-section {
+            padding: 5rem 2rem;
+            background: var(--sand);
+            text-align: center;
+        }
+
+        .quote-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .quote-mark {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 4rem;
+            color: var(--rust);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .quote-text {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+            font-style: italic;
+            color: var(--deep-charcoal);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-attr {
+            font-size: 0.8rem;
+            color: var(--earth);
+            letter-spacing: 0.1em;
+        }
+
+        /* Entry Section */
+        .entry {
+            padding: 5rem 2rem;
+            background: var(--off-white);
+        }
+
+        .entry-container {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .entry h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        .entry-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .entry-box {
+            background: var(--warm-cream);
+            padding: 1.25rem;
+        }
+
+        .entry-box .label {
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--stone);
+            margin-bottom: 0.25rem;
+        }
+
+        .entry-box .value {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.25rem;
+            color: var(--deep-charcoal);
+        }
+
+        .entry-note {
+            font-size: 0.85rem;
+            color: var(--earth);
+            margin-bottom: 2rem;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--warm-cream) 0%, var(--sand) 100%);
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 400;
+            margin-bottom: 1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .final-cta p {
+            color: var(--earth);
+            margin-bottom: 2rem;
+        }
+
+        .deadline-banner {
+            display: inline-block;
+            background: var(--rust);
+            color: var(--off-white);
+            padding: 0.5rem 1.5rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-top: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--deep-charcoal);
+            color: var(--off-white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-address {
+            font-size: 0.75rem;
+            opacity: 0.6;
+            line-height: 1.8;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-left > * {
+            animation: fadeIn 0.7s ease forwards;
+            opacity: 0;
+        }
+
+        .hero-left .eyebrow { animation-delay: 0.1s; }
+        .hero-left h1 { animation-delay: 0.2s; }
+        .hero-left .hero-text { animation-delay: 0.3s; }
+        .hero-left .cta-primary { animation-delay: 0.4s; }
+
+        .prize-highlight {
+            animation: fadeIn 0.8s ease 0.3s forwards;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-left">
+            <p class="eyebrow">Studio on Brunswick</p>
+            <h1>Most art prizes give you a cheque. <span class="highlight">This one builds your career.</span></h1>
+            <p class="hero-text">The Independent Visions Art Prize is designed to give emerging artists what actually matters: exhibition experience, professional mentoring, and ongoing support.</p>
+            <a href="#enter" class="cta-primary">Enter the Prize</a>
+        </div>
+        <div class="hero-right">
+            <div class="prize-highlight">
+                <p class="prize-amount">$11,399+</p>
+                <p class="prize-label">in career-building prizes</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="comparison">
+        <div class="comparison-container">
+            <h2>Not all art prizes are created equal</h2>
+            <div class="comparison-grid">
+                <div class="comparison-card typical">
+                    <h3>Typical Art Prize</h3>
+                    <ul>
+                        <li>One-time cash payment</li>
+                        <li>Brief mention, then forgotten</li>
+                        <li>No ongoing relationship</li>
+                        <li>You're on your own after</li>
+                        <li>Nice for the CV, that's it</li>
+                    </ul>
+                </div>
+                <div class="comparison-card ivap">
+                    <h3>Independent Visions Art Prize</h3>
+                    <ul>
+                        <li>Solo exhibition opportunity</li>
+                        <li>Up to 6 mentoring sessions</li>
+                        <li>12 months community membership</li>
+                        <li>Group coaching program</li>
+                        <li>Real career momentum</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prize Breakdown -->
+    <section class="breakdown">
+        <div class="breakdown-container">
+            <h2>What you can actually win</h2>
+            <p class="breakdown-intro">Seven prize categories, each designed to support different stages of your artistic journey.</p>
+            <div class="prize-tiers">
+                <div class="prize-tier">
+                    <span class="tier-name">First Prize</span>
+                    <span class="tier-includes">1-week solo exhibition, 6 mentoring sessions, 12mo membership, exhibition readiness pack, 6mo group program</span>
+                    <span class="tier-value">$3,449</span>
+                </div>
+                <div class="prize-tier">
+                    <span class="tier-name">SB Artist Accelerator</span>
+                    <span class="tier-includes">6 mentoring sessions, social media audit, 6mo group mentoring program</span>
+                    <span class="tier-value">$2,250</span>
+                </div>
+                <div class="prize-tier">
+                    <span class="tier-name">Second Prize</span>
+                    <span class="tier-includes">2026 group show placement, 4 mentoring sessions, 6mo membership, group program</span>
+                    <span class="tier-value">$2,100</span>
+                </div>
+                <div class="prize-tier">
+                    <span class="tier-name">Emerging Artist Award</span>
+                    <span class="tier-includes">3-session coaching package, 12mo Inner Circle membership</span>
+                    <span class="tier-value">$975</span>
+                </div>
+                <div class="prize-tier">
+                    <span class="tier-name">+ Additional Awards</span>
+                    <span class="tier-includes">Winner's Choice, People's Choice, Highly Commended Affiliate, Affiliates Choice</span>
+                    <span class="tier-value">$2,625</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included -->
+    <section class="included">
+        <div class="included-container">
+            <h2>The real value is in the support</h2>
+            <div class="included-grid">
+                <div class="included-item">
+                    <div class="included-icon">🖼</div>
+                    <h3>Exhibition Space</h3>
+                    <p>Professional gallery exhibition in Fortitude Valley, Feb 4–22</p>
+                </div>
+                <div class="included-item">
+                    <div class="included-icon">🎯</div>
+                    <h3>1:1 Mentoring</h3>
+                    <p>Personal coaching sessions with experienced creative professionals</p>
+                </div>
+                <div class="included-item">
+                    <div class="included-icon">👥</div>
+                    <h3>Group Programs</h3>
+                    <p>The Artist Momentum Collective—6 months of structured support</p>
+                </div>
+                <div class="included-item">
+                    <div class="included-icon">🔑</div>
+                    <h3>Inner Circle Access</h3>
+                    <p>Membership to an ongoing community of independent artists</p>
+                </div>
+                <div class="included-item">
+                    <div class="included-icon">📱</div>
+                    <h3>Social Media Audit</h3>
+                    <p>Professional review to strengthen your online presence</p>
+                </div>
+                <div class="included-item">
+                    <div class="included-icon">📋</div>
+                    <h3>Exhibition Readiness</h3>
+                    <p>Practical tools and guidance to prepare for showing work</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="quote-section">
+        <div class="quote-container">
+            <div class="quote-mark">"</div>
+            <p class="quote-text">This prize has been created to recognise creative clarity, artistic direction, and the ambition to build a thriving art practice.</p>
+            <p class="quote-attr">— Studio on Brunswick</p>
+        </div>
+    </section>
+
+    <!-- Entry -->
+    <section class="entry" id="enter">
+        <div class="entry-container">
+            <h2>Ready to enter?</h2>
+            <div class="entry-grid">
+                <div class="entry-box">
+                    <p class="label">Entry Fee</p>
+                    <p class="value">$50 AUD</p>
+                </div>
+                <div class="entry-box">
+                    <p class="label">Submit</p>
+                    <p class="value">Up to 6 works</p>
+                </div>
+                <div class="entry-box">
+                    <p class="label">Deadline</p>
+                    <p class="value">January 9</p>
+                </div>
+                <div class="entry-box">
+                    <p class="label">Open to</p>
+                    <p class="value">All Australia</p>
+                </div>
+            </div>
+            <p class="entry-note">All mediums welcome. 2D works: 50×50cm or equivalent. 3D works: max 100cm any direction.</p>
+            <a href="https://studioonbrunswick.com.au/courses-classes-connect-events/p/independent-visions-art-prize" class="cta-primary">Submit Your Entry</a>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <h2>A prize that keeps giving long after the opening night.</h2>
+        <p>Build real momentum in your art career. Enter by January 9.</p>
+        <a href="https://studioonbrunswick.com.au/courses-classes-connect-events/p/independent-visions-art-prize" class="cta-primary">Enter the Independent Visions Art Prize</a>
+        <div class="deadline-banner">Entries close January 9</div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-logo">Studio on Brunswick</p>
+        <p class="footer-address">
+            Gallery: California Lane, 2/22 McLachlan Street<br>
+            Fortitude Valley, Brisbane QLD 4006<br>
+            adminsb@studioonbrunswick.com
+        </p>
+    </footer>
+</body>
+</html>

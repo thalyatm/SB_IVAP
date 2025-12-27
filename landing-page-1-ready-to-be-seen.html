@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Independent Visions Art Prize | Studio on Brunswick</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --warm-white: #FAF8F5;
+            --cream: #F5F0E8;
+            --soft-taupe: #E8E0D5;
+            --warm-gray: #8B7E74;
+            --deep-brown: #4A3F35;
+            --charcoal: #2D2A26;
+            --accent-terracotta: #C4846C;
+            --accent-sage: #9CAF94;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--warm-white);
+            color: var(--charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 50%, var(--soft-taupe) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(196, 132, 108, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(156, 175, 148, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--warm-gray);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--charcoal);
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent-terracotta);
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            color: var(--warm-gray);
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            background-color: var(--charcoal);
+            color: var(--warm-white);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            border: 2px solid var(--charcoal);
+        }
+
+        .cta-primary:hover {
+            background-color: transparent;
+            color: var(--charcoal);
+        }
+
+        .deadline-badge {
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            color: var(--accent-terracotta);
+            font-weight: 500;
+        }
+
+        /* Prize Value Section */
+        .prize-banner {
+            background-color: var(--charcoal);
+            color: var(--warm-white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .prize-banner .value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .prize-banner .value-subtitle {
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        /* What You Get Section */
+        .benefits {
+            padding: 5rem 2rem;
+            background-color: var(--cream);
+        }
+
+        .benefits-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--charcoal);
+        }
+
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background: var(--warm-white);
+            padding: 2rem;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--accent-terracotta);
+        }
+
+        .benefit-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: var(--deep-brown);
+        }
+
+        .benefit-card p {
+            font-size: 0.9rem;
+            color: var(--warm-gray);
+            line-height: 1.7;
+        }
+
+        /* Exhibition Preview */
+        .exhibition-section {
+            padding: 5rem 2rem;
+            background: var(--warm-white);
+        }
+
+        .exhibition-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .exhibition-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .exhibition-image {
+            aspect-ratio: 4/3;
+            background: linear-gradient(145deg, var(--soft-taupe), var(--cream));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exhibition-image::after {
+            content: 'Your work here';
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.25rem;
+            color: var(--warm-gray);
+        }
+
+        .exhibition-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+
+        .exhibition-content p {
+            color: var(--warm-gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .exhibition-details {
+            font-size: 0.85rem;
+            padding: 1rem;
+            background: var(--cream);
+            border-left: 3px solid var(--accent-sage);
+        }
+
+        .exhibition-details strong {
+            color: var(--deep-brown);
+        }
+
+        /* Who Should Enter */
+        .who-section {
+            padding: 5rem 2rem;
+            background: var(--soft-taupe);
+        }
+
+        .who-container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .who-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: var(--charcoal);
+        }
+
+        .who-list {
+            list-style: none;
+            text-align: left;
+            max-width: 450px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .who-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--deep-brown);
+            font-size: 0.95rem;
+        }
+
+        .who-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-terracotta);
+        }
+
+        /* Entry Details */
+        .entry-section {
+            padding: 5rem 2rem;
+            background: var(--warm-white);
+        }
+
+        .entry-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .entry-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: var(--charcoal);
+        }
+
+        .entry-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .entry-item {
+            padding: 1.5rem;
+            background: var(--cream);
+        }
+
+        .entry-item .label {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--warm-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .entry-item .value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--charcoal);
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--soft-taupe) 100%);
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+
+        .final-cta p {
+            color: var(--warm-gray);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: var(--warm-white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-address {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            line-height: 1.8;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content > * {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero-content .eyebrow { animation-delay: 0.1s; }
+        .hero-content h1 { animation-delay: 0.2s; }
+        .hero-content .hero-subtitle { animation-delay: 0.3s; }
+        .hero-content .cta-primary { animation-delay: 0.4s; }
+        .hero-content .deadline-badge { animation-delay: 0.5s; }
+
+        .hero-content > * {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="eyebrow">Studio on Brunswick presents</p>
+            <h1>Your work deserves a wall, <em>not a drawer.</em></h1>
+            <p class="hero-subtitle">The Independent Visions Art Prize is your chance to step into a professional exhibition and be seen by people who take your art seriously.</p>
+            <a href="#enter" class="cta-primary">Enter the Prize — $50</a>
+            <p class="deadline-badge">Entries close January 9</p>
+        </div>
+    </section>
+
+    <!-- Prize Value Banner -->
+    <section class="prize-banner">
+        <p class="value">$11,399+ in prizes</p>
+        <p class="value-subtitle">Exhibitions • Mentoring • Career Development</p>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="benefits-container">
+            <h2 class="section-title">What this prize actually gives you</h2>
+            <div class="benefit-grid">
+                <div class="benefit-card">
+                    <h3>Professional Exhibition</h3>
+                    <p>Show your work in a respected Brisbane gallery space, February 4–22. Not a pop-up. Not a café wall. A real exhibition.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Eyes That Matter</h3>
+                    <p>Your work reviewed by arts professionals and guest judge Kate Marek (2025 Queens Wharf Brisbane Art Prize winner).</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>One-on-One Mentoring</h3>
+                    <p>Up to six coaching sessions with experienced artists who've built sustainable creative careers.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Community That Lifts</h3>
+                    <p>Inner Circle membership and group mentoring—ongoing support, not a one-off event.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exhibition Section -->
+    <section class="exhibition-section">
+        <div class="exhibition-container">
+            <div class="exhibition-image"></div>
+            <div class="exhibition-content">
+                <h2>A real exhibition in a real gallery</h2>
+                <p>Selected artists exhibit at Studio on Brunswick's California Lane gallery in Fortitude Valley. This is a professional space designed to show your work at its best—not squeeze it in as an afterthought.</p>
+                <div class="exhibition-details">
+                    <strong>Exhibition dates:</strong> February 4 – 22, 2025<br>
+                    <strong>Location:</strong> California Lane, 2/22 McLachlan St, Fortitude Valley
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who Should Enter -->
+    <section class="who-section">
+        <div class="who-container">
+            <h2>This prize is for you if…</h2>
+            <ul class="who-list">
+                <li>You've been creating but haven't shown your work professionally</li>
+                <li>You're ready to be taken seriously as an artist</li>
+                <li>You want exhibition experience without the gatekeeping</li>
+                <li>You're building a body of work and need momentum</li>
+                <li>You're open to growth, feedback, and real support</li>
+            </ul>
+            <a href="#enter" class="cta-primary">Enter Now</a>
+        </div>
+    </section>
+
+    <!-- Entry Details -->
+    <section class="entry-section" id="enter">
+        <div class="entry-container">
+            <h2>Simple to enter</h2>
+            <div class="entry-details">
+                <div class="entry-item">
+                    <p class="label">Entry Fee</p>
+                    <p class="value">$50</p>
+                </div>
+                <div class="entry-item">
+                    <p class="label">Artworks</p>
+                    <p class="value">Up to 6</p>
+                </div>
+                <div class="entry-item">
+                    <p class="label">Deadline</p>
+                    <p class="value">Jan 9</p>
+                </div>
+                <div class="entry-item">
+                    <p class="label">Mediums</p>
+                    <p class="value">All welcome</p>
+                </div>
+            </div>
+            <a href="https://studioonbrunswick.com.au/courses-classes-connect-events/p/independent-visions-art-prize" class="cta-primary">Submit Your Entry</a>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <h2>Stop waiting to be discovered.</h2>
+        <p>Put your work where it belongs—on a gallery wall, in front of people who care.</p>
+        <a href="https://studioonbrunswick.com.au/courses-classes-connect-events/p/independent-visions-art-prize" class="cta-primary">Enter the Independent Visions Art Prize</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-logo">Studio on Brunswick</p>
+        <p class="footer-address">
+            Gallery: California Lane, 2/22 McLachlan Street<br>
+            Fortitude Valley, Brisbane QLD 4006<br>
+            adminsb@studioonbrunswick.com
+        </p>
+    </footer>
+</body>
+</html>
