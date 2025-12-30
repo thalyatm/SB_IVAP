@@ -151,7 +151,15 @@
             color: var(--ink);
         }
 
-        /* Pain Points */
+        .hero-note {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: var(--copper);
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        /* Recognition Section (formerly Pain Points) */
         .pain-section {
             padding: 5rem 2rem;
             background: var(--linen);
@@ -162,12 +170,25 @@
             margin: 0 auto;
         }
 
+        .section-eyebrow {
+            text-align: center;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--copper);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
         .pain-section h2 {
             font-family: 'Fraunces', serif;
             font-size: clamp(1.5rem, 3vw, 2rem);
             font-weight: 400;
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .pain-grid {
@@ -188,11 +209,21 @@
             display: flex;
             align-items: flex-start;
             gap: 1rem;
+            border-left: 3px solid var(--pebble);
+            transition: border-color 0.3s ease;
         }
 
-        .pain-icon {
-            font-size: 1.25rem;
-            line-height: 1.5;
+        .pain-item:hover {
+            border-left-color: var(--moss);
+        }
+
+        .pain-marker {
+            flex-shrink: 0;
+            width: 8px;
+            height: 8px;
+            background: var(--moss);
+            border-radius: 50%;
+            margin-top: 0.5rem;
         }
 
         .pain-text {
@@ -203,6 +234,17 @@
         .pain-text strong {
             color: var(--ink);
             font-weight: 500;
+        }
+
+        .pain-reassurance {
+            text-align: center;
+            margin-top: 2.5rem;
+            font-size: 1rem;
+            color: var(--ink);
+            font-style: italic;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Solution Section */
@@ -216,18 +258,23 @@
             margin: 0 auto;
         }
 
+        .solution .section-eyebrow {
+            text-align: center;
+            margin-bottom: 0.75rem;
+        }
+
         .solution h2 {
             font-family: 'Fraunces', serif;
             font-size: clamp(1.5rem, 3vw, 2rem);
             font-weight: 400;
             text-align: center;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .solution-intro {
             text-align: center;
             color: var(--bark);
-            max-width: 600px;
+            max-width: 550px;
             margin: 0 auto 3rem;
         }
 
@@ -264,11 +311,29 @@
         .solution-card:nth-child(2)::before { background: var(--moss); }
         .solution-card:nth-child(3)::before { background: var(--sky); }
 
+        .solution-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            margin: 0.5rem auto 0;
+            font-family: 'Fraunces', serif;
+            font-size: 0.9rem;
+            color: var(--bark);
+            border: 1px solid var(--clay);
+            border-radius: 50%;
+        }
+
+        .solution-card:nth-child(1) .solution-number { color: var(--copper); border-color: var(--copper); }
+        .solution-card:nth-child(2) .solution-number { color: var(--moss); border-color: var(--moss); }
+        .solution-card:nth-child(3) .solution-number { color: var(--sky); border-color: var(--sky); }
+
         .solution-card h3 {
             font-family: 'Fraunces', serif;
             font-size: 1.1rem;
             font-weight: 500;
-            margin: 1rem 0 0.75rem;
+            margin: 0.75rem 0;
             color: var(--ink);
         }
 
@@ -294,7 +359,14 @@
             font-size: clamp(1.5rem, 3vw, 2rem);
             font-weight: 400;
             text-align: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .journey-intro {
+            text-align: center;
+            color: var(--clay);
             margin-bottom: 3rem;
+            font-size: 1rem;
         }
 
         .journey-steps {
@@ -345,12 +417,24 @@
             margin: 0 auto;
         }
 
+        .get-section .section-eyebrow {
+            text-align: center;
+            margin-bottom: 0.75rem;
+        }
+
         .get-section h2 {
             font-family: 'Fraunces', serif;
             font-size: clamp(1.5rem, 3vw, 2rem);
             font-weight: 400;
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .get-intro {
+            text-align: center;
+            color: var(--bark);
+            max-width: 500px;
+            margin: 0 auto 3rem;
         }
 
         .get-grid {
@@ -421,13 +505,23 @@
             margin: 0 auto;
         }
 
-        .affirmation p {
+        .affirmation-lead {
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--copper);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .affirmation p:not(.affirmation-lead) {
             font-family: 'Fraunces', serif;
-            font-size: clamp(1.25rem, 3vw, 1.5rem);
+            font-size: clamp(1.15rem, 2.5vw, 1.35rem);
             font-style: italic;
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--ink);
             margin-bottom: 1.5rem;
+            max-width: 650px;
         }
 
         .affirmation .attr {
@@ -580,58 +674,65 @@
     <!-- Hero -->
     <section class="hero">
         <div class="hero-content">
-            <span class="hero-tag">For artists ready to grow</span>
-            <h1>Talented but <span class="italic">scattered?</span> This prize is for you.</h1>
-            <p class="hero-subtitle">The Independent Visions Art Prize isn't just about winning—it's about finding clarity, building momentum, and finally moving forward with purpose.</p>
+            <span class="hero-tag">For artists seeking clarity</span>
+            <h1>You're creating. Now it's time to find your <span class="italic">direction.</span></h1>
+            <p class="hero-subtitle">The Independent Visions Art Prize is more than a competition—it's a pathway to clarity, professional momentum, and the support you've been looking for.</p>
             <div class="cta-group">
                 <a href="#enter" class="cta-primary">Enter the Prize — $50</a>
                 <a href="#how" class="cta-secondary">See How It Works</a>
             </div>
+            <p class="hero-note">$11,399+ in mentoring, exhibitions & career development</p>
         </div>
     </section>
 
-    <!-- Pain Points -->
+    <!-- Recognition Section -->
     <section class="pain-section">
         <div class="pain-container">
-            <h2>Sound familiar?</h2>
+            <p class="section-eyebrow">We see you</p>
+            <h2>The creative journey can feel uncertain—and that's okay.</h2>
             <div class="pain-grid">
                 <div class="pain-item">
-                    <span class="pain-icon">🌀</span>
-                    <p class="pain-text"><strong>You're creating</strong> but it feels random—no clear direction or cohesive body of work.</p>
+                    <span class="pain-marker"></span>
+                    <p class="pain-text"><strong>You're making work</strong> but haven't found a cohesive direction or vision yet.</p>
                 </div>
                 <div class="pain-item">
-                    <span class="pain-icon">🚪</span>
-                    <p class="pain-text"><strong>You want to exhibit</strong> but don't know how to break into the gallery world.</p>
+                    <span class="pain-marker"></span>
+                    <p class="pain-text"><strong>You want to exhibit</strong> but the gallery world feels like a closed door.</p>
                 </div>
                 <div class="pain-item">
-                    <span class="pain-icon">🏝️</span>
-                    <p class="pain-text"><strong>You feel isolated</strong>—making art alone with no community or feedback loop.</p>
+                    <span class="pain-marker"></span>
+                    <p class="pain-text"><strong>You're working alone</strong>—without community, mentorship, or meaningful feedback.</p>
                 </div>
                 <div class="pain-item">
-                    <span class="pain-icon">❓</span>
-                    <p class="pain-text"><strong>You're unsure what's next</strong>—how to grow, who to talk to, what to focus on.</p>
+                    <span class="pain-marker"></span>
+                    <p class="pain-text"><strong>You're ready to grow</strong> but unsure what step to take next.</p>
                 </div>
             </div>
+            <p class="pain-reassurance">These are signs you're ready for something more. This prize was designed for exactly where you are.</p>
         </div>
     </section>
 
     <!-- Solution -->
     <section class="solution" id="how">
         <div class="solution-container">
-            <h2>This prize is designed to change that</h2>
-            <p class="solution-intro">More than a competition—it's a structured pathway to creative clarity and professional momentum.</p>
+            <p class="section-eyebrow">The pathway</p>
+            <h2>From uncertainty to momentum</h2>
+            <p class="solution-intro">This prize gives you the three things emerging artists actually need—but rarely get together.</p>
             <div class="solution-cards">
                 <div class="solution-card">
-                    <h3>Get Clear</h3>
-                    <p>Mentoring and coaching to help you define your artistic direction and build a focused practice.</p>
+                    <span class="solution-number">1</span>
+                    <h3>Clarity</h3>
+                    <p>One-on-one mentoring sessions to help you define your artistic vision, refine your direction, and build a focused practice.</p>
                 </div>
                 <div class="solution-card">
-                    <h3>Get Seen</h3>
-                    <p>Professional exhibition in a respected Brisbane gallery. Real walls, real audience, real experience.</p>
+                    <span class="solution-number">2</span>
+                    <h3>Visibility</h3>
+                    <p>A professional exhibition at Studio on Brunswick. Your work on real gallery walls, in front of an engaged audience.</p>
                 </div>
                 <div class="solution-card">
-                    <h3>Get Connected</h3>
-                    <p>Join a community of independent artists through Inner Circle membership and group programs.</p>
+                    <span class="solution-number">3</span>
+                    <h3>Community</h3>
+                    <p>Inner Circle membership and group mentoring—ongoing support from artists who understand your journey.</p>
                 </div>
             </div>
         </div>
@@ -640,34 +741,35 @@
     <!-- Journey Steps -->
     <section class="journey">
         <div class="journey-container">
-            <h2>Your path from here</h2>
+            <h2>A clear path forward</h2>
+            <p class="journey-intro">No guesswork. Just a simple, supportive process.</p>
             <div class="journey-steps">
                 <div class="journey-step">
                     <div class="step-number">1</div>
                     <div class="step-content">
-                        <h3>Enter by January 9</h3>
-                        <p>Submit up to 6 artworks. All mediums welcome.</p>
+                        <h3>Submit your work</h3>
+                        <p>Enter by January 9 with up to 6 artworks. All mediums welcome.</p>
                     </div>
                 </div>
                 <div class="journey-step">
                     <div class="step-number">2</div>
                     <div class="step-content">
-                        <h3>Hear back quickly</h3>
-                        <p>Notifications sent the Friday after entries close.</p>
+                        <h3>Get selected</h3>
+                        <p>Notifications sent the Friday after entries close—no long waits.</p>
                     </div>
                 </div>
                 <div class="journey-step">
                     <div class="step-number">3</div>
                     <div class="step-content">
-                        <h3>Exhibit in February</h3>
-                        <p>Show your work February 4–22 at Studio on Brunswick.</p>
+                        <h3>Exhibit your work</h3>
+                        <p>Show February 4–22 at Studio on Brunswick in Fortitude Valley.</p>
                     </div>
                 </div>
                 <div class="journey-step">
                     <div class="step-number">4</div>
                     <div class="step-content">
-                        <h3>Begin your development</h3>
-                        <p>Prize winners receive mentoring, coaching, and community access—support that continues for months.</p>
+                        <h3>Grow with support</h3>
+                        <p>Winners receive mentoring, community access, and career development—continuing for months after.</p>
                     </div>
                 </div>
             </div>
@@ -677,23 +779,25 @@
     <!-- What You'll Get -->
     <section class="get-section">
         <div class="get-container">
-            <h2>What winners receive</h2>
+            <p class="section-eyebrow">What you'll receive</p>
+            <h2>Support that keeps going</h2>
+            <p class="get-intro">Unlike most prizes that end at the cheque, this one keeps supporting you for months.</p>
             <div class="get-grid">
                 <div class="get-item">
                     <h3>1:1 Mentoring Sessions</h3>
-                    <p>Personal guidance from artists who've built sustainable creative careers. Up to 6 sessions depending on prize level.</p>
+                    <p>Up to 6 personal sessions with artists who've built sustainable creative careers. Real guidance for your specific journey.</p>
                 </div>
                 <div class="get-item">
                     <h3>Inner Circle Membership</h3>
-                    <p>6–12 months access to an ongoing community with real-time support, mindset work, and connection.</p>
+                    <p>6–12 months in an ongoing community with real-time support, mindset work, and connection with fellow artists.</p>
                 </div>
                 <div class="get-item">
                     <h3>Group Mentoring Program</h3>
-                    <p>The Artist Momentum Collective—6 months of structured group support to keep you moving.</p>
+                    <p>The Artist Momentum Collective—6 months of structured group support designed to keep you moving forward.</p>
                 </div>
                 <div class="get-item">
                     <h3>Exhibition Opportunities</h3>
-                    <p>Solo show (First Prize) or 2026 group show placement (Second Prize). Professional gallery experience.</p>
+                    <p>Solo exhibition (First Prize) or 2026 group show placement. Professional gallery experience on your CV.</p>
                 </div>
             </div>
             <div class="get-highlight">
@@ -706,7 +810,8 @@
     <!-- Affirmation -->
     <section class="affirmation">
         <div class="affirmation-container">
-            <p>"This prize recognises creative clarity, artistic direction, and the ambition to build a thriving art practice."</p>
+            <p class="affirmation-lead">This prize was created for artists at a turning point.</p>
+            <p>"We believe clarity comes through action—through exhibiting, through mentorship, through being part of a community that sees you as an artist, not a hobbyist."</p>
             <span class="attr">— Studio on Brunswick</span>
         </div>
     </section>
@@ -714,8 +819,8 @@
     <!-- Entry Section -->
     <section class="entry-section" id="enter">
         <div class="entry-container">
-            <h2>Ready to find your direction?</h2>
-            <p class="subtitle">Entry is simple.</p>
+            <h2>Take the first step</h2>
+            <p class="subtitle">Entering is simple. Growing is what comes next.</p>
             <div class="entry-details">
                 <div class="entry-detail">
                     <p class="label">Entry Fee</p>
@@ -734,17 +839,17 @@
                     <p class="value">Australia-wide</p>
                 </div>
             </div>
-            <p class="entry-note">All mediums welcome. 2D: 50×50cm or equivalent. 3D: max 100cm.<br>Guest judge: Kate Marek (2025 Queens Wharf Brisbane Art Prize winner)</p>
+            <p class="entry-note">All mediums welcome. 2D: 50×50cm or equivalent area. 3D: max 100cm.<br>Judged by Kate Marek (2025 Queens Wharf Brisbane Art Prize winner)</p>
             <a href="https://studioonbrunswick.com.au/courses-classes-connect-events/p/independent-visions-art-prize" class="cta-primary">Submit Your Entry</a>
         </div>
     </section>
 
     <!-- Final CTA -->
     <section class="final-cta">
-        <h2>Stop spinning. Start <span class="italic">building.</span></h2>
-        <p>This is your invitation to clarity, momentum, and a community that wants to see you thrive.</p>
+        <h2>Your direction starts with a <span class="italic">decision.</span></h2>
+        <p>Clarity, momentum, community, and support—it all begins when you enter.</p>
         <a href="https://studioonbrunswick.com.au/courses-classes-connect-events/p/independent-visions-art-prize" class="cta-primary">Enter the Independent Visions Art Prize</a>
-        <p class="deadline-note">Entries close January 9</p>
+        <p class="deadline-note">Entries close January 9, 2025</p>
     </section>
 
     <!-- Footer -->
