@@ -103,10 +103,6 @@ function FindYourDirection() {
             backs emerging artists.
           </p>
 
-          <div className="hero-price-anchor">
-            <span className="price-per-work">$8.33</span>
-            <span className="price-context">per artwork · $50 enters up to 6 pieces</span>
-          </div>
 
           <a
             href={entryUrl}
@@ -146,37 +142,60 @@ function FindYourDirection() {
       {/* What Winners Get */}
       <section className="story-benefits" id="benefits" aria-labelledby="benefits-heading">
         <div className="story-benefits-container">
-          <h2 id="benefits-heading" className="story-section-heading">7 Ways to Win</h2>
+          <h2 id="benefits-heading" className="story-section-heading">8 Ways to Win</h2>
           <p className="story-benefits-intro">Each prize is designed to build real career momentum — not just a cheque and a handshake.</p>
 
           <div className="story-benefits-grid" role="list">
             <article className="story-benefit" role="listitem">
               <span className="story-benefit-label">First Prize</span>
+              <span className="story-benefit-value">valued at $3,449</span>
               <h3>Solo Exhibition + Mentoring</h3>
-              <p>3-week show at Studio on Brunswick, 6 private coaching sessions, 12-month community membership.</p>
+              <ul className="benefit-list">
+                <li>1-week solo exhibition at Studio on Brunswick Pop Up Gallery</li>
+                <li>6 coaching sessions</li>
+                <li>12-month Inner Circle</li>
+                <li>Exhibition Readiness Pack</li>
+                <li>6-month group mentoring</li>
+              </ul>
+            </article>
+
+            <article className="story-benefit" role="listitem">
+              <span className="story-benefit-label">SB Artist Accelerator</span>
+              <span className="story-benefit-value">valued at $2,250</span>
+              <h3>Intensive Development</h3>
+              <ul className="benefit-list">
+                <li>6 coaching sessions</li>
+                <li>Professional social media audit</li>
+                <li>6-month group mentoring program</li>
+              </ul>
             </article>
 
             <article className="story-benefit" role="listitem">
               <span className="story-benefit-label">Second Prize</span>
+              <span className="story-benefit-value">valued at $2,100</span>
               <h3>Group Show + Coaching</h3>
-              <p>Placement in 2026 group exhibition, 4 coaching sessions, 6-month membership.</p>
+              <ul className="benefit-list">
+                <li>Place in 2026 group show</li>
+                <li>4 coaching sessions</li>
+                <li>6-month Inner Circle</li>
+                <li>6-month group mentoring</li>
+              </ul>
             </article>
 
             <article className="story-benefit" role="listitem">
-              <span className="story-benefit-label">Artist Accelerator</span>
-              <h3>Intensive Mentoring</h3>
-              <p>6 private coaching sessions, professional social media audit, 6-month group mentoring.</p>
-            </article>
-
-            <article className="story-benefit" role="listitem">
-              <span className="story-benefit-label">+ 4 More Categories</span>
-              <h3>Emerging, Winner's Choice, People's Choice & Honourable Mentions</h3>
-              <p>Coaching sessions, community access, and Art Shed vouchers across all categories.</p>
+              <span className="story-benefit-label">+ 5 More Awards</span>
+              <span className="story-benefit-value">valued at $4,075+</span>
+              <h3>Emerging Artist, Winner's Choice, People's Choice & Affiliate Awards</h3>
+              <ul className="benefit-list">
+                <li>Coaching packages</li>
+                <li>Inner Circle membership</li>
+                <li>Art Shed vouchers</li>
+              </ul>
             </article>
           </div>
 
           <p className="benefits-note">
-            Total prize pool valued at $11,300+
+            Total prize pool valued at $11,449+
           </p>
         </div>
       </section>
@@ -195,7 +214,6 @@ function FindYourDirection() {
           <div className="no-cv-points">
             <span className="no-cv-point">No gallery representation needed</span>
             <span className="no-cv-point">No formal training required</span>
-            <span className="no-cv-point">No long application forms</span>
           </div>
         </div>
       </section>
@@ -223,8 +241,9 @@ function FindYourDirection() {
               <ul>
                 <li><span className="check-icon">✓</span> Based anywhere in Australia</li>
                 <li><span className="check-icon">✓</span> Emerging or independent (no gallery rep required)</li>
-                <li><span className="check-icon">✓</span> Any medium: painting, sculpture, photography, digital, textiles, mixed media</li>
-                <li><span className="check-icon">✓</span> Work ready for display (2D: min 50×50cm / 3D: max 100cm)</li>
+                <li><span className="check-icon">✓</span> All mediums welcome</li>
+                <li><span className="check-icon">✓</span> 2D works: 50×50cm or equivalent / 3D works: max 100cm (larger works considered on request)</li>
+                <li><span className="check-icon">✓</span> All works must be ready for safe gallery display if selected</li>
               </ul>
             </div>
           </div>
@@ -235,13 +254,13 @@ function FindYourDirection() {
       <section className="story-steps" id="how" aria-labelledby="steps-heading">
         <div className="story-steps-container">
           <h2 id="steps-heading" className="story-section-heading light">3 Minutes to Secure Your Spot</h2>
-          <p className="steps-intro">No essays. No committees. No waiting months for a response.</p>
+          <p className="steps-intro">Simple entry. Fair judging. Quick results.</p>
 
           <ol className="story-steps-list">
             <li className="story-step">
               <span className="story-step-number" aria-hidden="true">1</span>
               <h3>Click. Pay. Done.</h3>
-              <p>$50 gets you in. Secure checkout. Instant confirmation. No forms to fill.</p>
+              <p>$50 gets you in. Secure checkout. Instant confirmation.</p>
             </li>
             <li className="story-step">
               <span className="story-step-number" aria-hidden="true">2</span>
@@ -291,7 +310,7 @@ function FindYourDirection() {
           </a>
 
           <p className="final-price">
-            $50 · Up to 6 artworks · That's $8.33 per piece
+            $50 entry · Up to 6 artworks
           </p>
         </div>
       </section>
@@ -324,12 +343,12 @@ function FindYourDirection() {
 
             <div className={`story-faq-item ${openFaq === 4 ? 'open' : ''}`} onClick={() => toggleFaq(4)}>
               <h3>What mediums are accepted? <span className="faq-icon"></span></h3>
-              <p>All mediums are welcome: painting, sculpture, photography, mixed media, digital (printed), textiles, and more.</p>
+              <p>All mediums are welcome. Larger works may be considered upon request.</p>
             </div>
 
             <div className={`story-faq-item ${openFaq === 5 ? 'open' : ''}`} onClick={() => toggleFaq(5)}>
               <h3>Does my work need to be framed? <span className="faq-icon"></span></h3>
-              <p>Work must be ready for gallery display. This typically means framed or professionally mounted, but depends on the medium.</p>
+              <p>All works must be ready for safe gallery display if selected. This typically means framed or professionally mounted, depending on the medium.</p>
             </div>
           </div>
         </div>

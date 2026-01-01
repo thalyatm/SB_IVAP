@@ -3,6 +3,7 @@ import './ReadyToBeSeen.css';
 
 function ReadyToBeSeen() {
   const [openFaq, setOpenFaq] = useState(null);
+  const [showMorePrizes, setShowMorePrizes] = useState(false);
 
   const toggleFaq = (index) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -19,7 +20,7 @@ function ReadyToBeSeen() {
             <a href="#eligibility" className="page-nav-link">Eligibility</a>
             <a href="#faq" className="page-nav-link">FAQ</a>
           </div>
-          <a href="https://buy.stripe.com/14AdRb4Hn2FCbn26Jm3wQ00" className="page-nav-cta">Enter Now</a>
+          <a href="https://buy.stripe.com/14AdRb4Hn2FCbn26Jm3wQ00" className="page-nav-cta">Submit Entry</a>
         </div>
       </nav>
 
@@ -31,15 +32,15 @@ function ReadyToBeSeen() {
         <div className="hero-content-1">
           <p className="eyebrow-1">Independent Visions Art Prize</p>
           <h1 className="headline-1">Your work deserves a wall,<br/><span className="headline-accent">not a drawer.</span></h1>
-          <p className="subheadline-1">A career-building opportunity for emerging and independent artists.</p>
-          <p className="location-note-1">Open to artists Australia-wide</p>
+          <p className="subheadline-1">Submit your work for the chance to win prizes, exhibition space, and career-building mentorship.</p>
+          <p className="location-note-1">Open to emerging and independent artists Australia-wide</p>
           <div className="hero-details-1">
             <div className="hero-detail">
-              <span className="detail-value">$11,300+</span>
+              <span className="detail-value">$11,399+</span>
               <span className="detail-label">Prize Pool</span>
             </div>
             <div className="hero-detail">
-              <span className="detail-value">6+</span>
+              <span className="detail-value">8</span>
               <span className="detail-label">Prizes to Be Won</span>
             </div>
             <div className="hero-detail">
@@ -50,9 +51,9 @@ function ReadyToBeSeen() {
           </div>
           <div className="hero-cta-group">
             <a href="https://buy.stripe.com/14AdRb4Hn2FCbn26Jm3wQ00" className="cta-primary-1">
-              Enter Now — $50
+              Submit Your Entry — $50
             </a>
-            <p className="entry-note">Up to 6 artworks per entry · <span className="deadline-text">Entries close Jan 9</span></p>
+            <p className="entry-note">$50 entry fee · Submit up to 6 artworks · <span className="deadline-text">Entries close Jan 9</span></p>
           </div>
         </div>
       </section>
@@ -66,7 +67,7 @@ function ReadyToBeSeen() {
           </div>
           <div className="trust-item">
             <span className="trust-icon icon-gallery"></span>
-            <span>7 Award Categories</span>
+            <span>8 Award Categories</span>
           </div>
           <div className="trust-item">
             <span className="trust-icon icon-mentoring"></span>
@@ -75,47 +76,6 @@ function ReadyToBeSeen() {
           <div className="trust-item">
             <span className="trust-icon icon-clock"></span>
             <span>Entries Close Jan 9</span>
-          </div>
-        </div>
-      </section>
-
-      {/* The "Why" Section */}
-      <section className="why-section">
-        <div className="why-container">
-          <h2 className="section-title-1">What Winners Receive</h2>
-          <p className="section-subtitle">
-            Most art prizes hand you a cheque and forget your name. This one invests in your future.
-          </p>
-
-          <div className="benefit-grid-1">
-            <div className="benefit-card-1">
-              <div className="benefit-icon">&#9670;</div>
-              <div className="benefit-text">
-                <h3>Professional Exhibition</h3>
-                <p>Gallery show at Studio on Brunswick, Feb 4-22, 2026</p>
-              </div>
-            </div>
-            <div className="benefit-card-1">
-              <div className="benefit-icon">&#10022;</div>
-              <div className="benefit-text">
-                <h3>Professional Judging</h3>
-                <p>Guest judge Kate Marek, 2025 Queens Wharf Brisbane Art Prize winner</p>
-              </div>
-            </div>
-            <div className="benefit-card-1">
-              <div className="benefit-icon">&#10023;</div>
-              <div className="benefit-text">
-                <h3>1:1 Mentoring</h3>
-                <p>Up to 6 private coaching sessions with experienced artists</p>
-              </div>
-            </div>
-            <div className="benefit-card-1">
-              <div className="benefit-icon">&#10070;</div>
-              <div className="benefit-text">
-                <h3>Community Access</h3>
-                <p>Inner Circle membership and Artist Momentum Collective for up to 12 months</p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -130,52 +90,77 @@ function ReadyToBeSeen() {
           <div className="prize-stack">
             <div className="prize-card featured">
               <div className="prize-label">First Prize</div>
-              <div className="prize-value">$3,449</div>
+              <div className="prize-value"><span className="valued-at">Valued at</span> $3,449</div>
               <ul className="prize-includes">
-                <li>1-week solo exhibition</li>
-                <li>6 private coaching sessions</li>
-                <li>12-month Inner Circle membership</li>
-                <li>Exhibition Readiness Pack</li>
-                <li>6-month Artist Momentum Collective</li>
+                <li>One week solo exhibition at the Studio on Brunswick <a href="#venue" className="prize-link">Pop Up Gallery</a> <span className="item-value">valued at $1,050</span></li>
+                <li>Six 1:1 coaching/mentoring sessions <span className="item-value">valued at $1,350</span></li>
+                <li>12-month Inner Circle membership <span className="item-value">valued at $300</span></li>
+                <li>Exhibition Readiness Pack <span className="item-value">valued at $149</span></li>
+                <li>6-month Artist Momentum Collective <span className="item-value">valued at $600</span></li>
               </ul>
             </div>
 
             <div className="prize-card">
-              <div className="prize-label">SB Artist Accelerator</div>
-              <div className="prize-value">$2,250</div>
+              <div className="prize-label">SB Artist Accelerator Award</div>
+              <div className="prize-value"><span className="valued-at">Valued at</span> $2,250</div>
               <ul className="prize-includes">
-                <li>6 private coaching sessions</li>
-                <li>Professional social media audit</li>
-                <li>6-month group mentoring program</li>
+                <li>Six 1:1 coaching/mentoring sessions <span className="item-value">valued at $1,350</span></li>
+                <li>Social media audit <span className="item-value">valued at $300</span></li>
+                <li>6-month group mentoring program <span className="item-value">valued at $600</span></li>
               </ul>
             </div>
 
             <div className="prize-card">
               <div className="prize-label">Second Prize</div>
-              <div className="prize-value">$2,100</div>
+              <div className="prize-value"><span className="valued-at">Valued at</span> $2,100</div>
               <ul className="prize-includes">
-                <li>2026 group show placement</li>
-                <li>4 private coaching sessions</li>
-                <li>6-month Inner Circle membership</li>
-                <li>6-month group mentoring</li>
+                <li>Place in a 2026 group show <span className="item-value">valued at $450</span></li>
+                <li>Four 1:1 coaching/mentoring sessions <span className="item-value">valued at $900</span></li>
+                <li>6-month Inner Circle membership <span className="item-value">valued at $150</span></li>
+                <li>6-month group mentoring program <span className="item-value">valued at $600</span></li>
               </ul>
             </div>
 
-            <div className="prize-row">
-              <div className="prize-card-small">
-                <div className="prize-label">Emerging Artist Award</div>
-                <div className="prize-value">$975</div>
-                <p>3 coaching sessions + 12-month membership</p>
-              </div>
-              <div className="prize-card-small">
-                <div className="prize-label">Winner's Choice</div>
-                <div className="prize-value">$825</div>
-                <p>3 coaching sessions + 6-month membership</p>
-              </div>
-              <div className="prize-card-small">
-                <div className="prize-label">People's Choice</div>
-                <div className="prize-value">$325</div>
-                <p>$100 Art Shed voucher + 1 coaching session</p>
+            <div className={`more-prizes-section ${showMorePrizes ? 'open' : ''}`}>
+              <button
+                className="more-prizes-toggle"
+                onClick={() => setShowMorePrizes(!showMorePrizes)}
+              >
+                {showMorePrizes ? 'Hide' : 'Show'} 5 More Awards
+                <span className="toggle-icon"></span>
+              </button>
+
+              <div className="more-prizes-content">
+                <div className="prize-row">
+                  <div className="prize-card-small">
+                    <div className="prize-label">Emerging Artist Award</div>
+                    <div className="prize-value"><span className="valued-at">Valued at</span> $975</div>
+                    <p>3 coaching sessions + 12-month membership</p>
+                  </div>
+                  <div className="prize-card-small">
+                    <div className="prize-label">Winner's Choice Award</div>
+                    <div className="prize-value"><span className="valued-at">Valued at</span> $825</div>
+                    <p>3 coaching sessions + 6-month membership</p>
+                  </div>
+                  <div className="prize-card-small">
+                    <div className="prize-label">People's Choice Award</div>
+                    <div className="prize-value"><span className="valued-at">Valued at</span> $325</div>
+                    <p>$100 Art Shed voucher + 1 coaching session</p>
+                  </div>
+                </div>
+
+                <div className="prize-row">
+                  <div className="prize-card-small">
+                    <div className="prize-label">Affiliates Choice Award</div>
+                    <div className="prize-value"><span className="valued-at">Valued at</span> $1,075</div>
+                    <p>Affiliate award package</p>
+                  </div>
+                  <div className="prize-card-small">
+                    <div className="prize-label">Highly Commended Affiliate</div>
+                    <div className="prize-value"><span className="valued-at">Valued at</span> $400</div>
+                    <p>Affiliate award package</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -251,18 +236,29 @@ function ReadyToBeSeen() {
       </section>
 
       {/* About the Gallery */}
-      <section className="gallery-section">
+      <section className="gallery-section" id="venue">
         <div className="gallery-container">
-          {/* [Gallery interior photo] */}
           <div className="gallery-content">
             <p className="gallery-eyebrow">The Venue</p>
-            <h2>Studio on Brunswick</h2>
+            <h2>Studio on Brunswick Pop Up Gallery</h2>
             <p className="gallery-location">California Lane, 2/22 McLachlan Street<br/>Fortitude Valley, Brisbane</p>
             <p className="gallery-description">
-              A professional gallery space in the heart of Brisbane's creative precinct.
-              This isn't a makeshift venue or temporary pop-up. It's a dedicated exhibition
-              space designed to showcase your work at its absolute best.
+              Sitting beautifully at the top end of California Lane, near Reverends Cafe, Pressi Juice Bar, and a myriad of boutique bars and shops - the perfect space for your exhibition.
             </p>
+            <p className="gallery-capacity">
+              <strong>Capacity:</strong> 20-30 people + laneway spill-out (24m²)
+            </p>
+            <div className="gallery-facilities">
+              <h4>Facilities</h4>
+              <ul className="facilities-list">
+                <li>Track hanging system</li>
+                <li>Wifi & air conditioning</li>
+                <li>Plinths, planks & easels</li>
+                <li>Wheelchair accessible</li>
+                <li>Close to public transport</li>
+                <li>Bathroom access</li>
+              </ul>
+            </div>
           </div>
           <div className="gallery-image">
             <img src="/images/Gallery.webp" alt="Studio on Brunswick gallery interior" />

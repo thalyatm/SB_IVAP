@@ -23,7 +23,8 @@
 #prizes,
 #how-it-works,
 #eligibility,
-#faq {
+#faq,
+#venue {
   scroll-margin-top: 140px;
 }
 
@@ -31,12 +32,12 @@
    HERO SECTION
    ================================ */
 .hero-1 {
-  min-height: 100vh;
+  min-height: auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 3rem;
-  padding: 0 4rem 3rem;
+  padding: 2.5rem 4rem 3.5rem;
   margin-top: 115px;
   position: relative;
   background: linear-gradient(145deg, var(--warm-white) 0%, var(--cream) 40%, var(--soft-taupe) 100%);
@@ -962,17 +963,6 @@
   position: relative;
 }
 
-.prizes-section::before {
-  content: '';
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1px;
-  height: 60px;
-  background: var(--soft-taupe);
-}
-
 .prizes-container {
   max-width: 900px;
   margin: 0 auto;
@@ -1041,8 +1031,16 @@
   color: var(--brand-gold);
 }
 
+.prize-card.featured .valued-at {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.prize-card.featured .item-value {
+  color: rgba(255, 255, 255, 0.6);
+}
+
 .prize-label {
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-bottom: 0.35rem;
@@ -1051,28 +1049,44 @@
 
 .prize-value {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.75rem;
+  font-size: 2rem;
   font-weight: 400;
   color: var(--brand-gold);
   margin-bottom: 0.75rem;
 }
 
-.prize-value::before {
-  content: 'Valued at ';
+.valued-at {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   display: block;
   margin-bottom: 0.15rem;
   opacity: 0.7;
+  font-weight: 400;
 }
 
 .prize-includes {
   list-style: none;
   text-align: left;
-  font-size: 0.8rem;
-  line-height: 1.6;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.item-value {
+  color: var(--warm-gray);
+  font-size: 0.85rem;
+}
+
+.prize-link {
+  color: var(--brand-gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: opacity 0.2s ease;
+}
+
+.prize-link:hover {
+  opacity: 0.8;
 }
 
 .prize-includes li {
@@ -1178,26 +1192,112 @@
 
 .prize-card-small {
   background: var(--soft-taupe);
-  padding: 1rem;
+  padding: 1.25rem;
   text-align: center;
 }
 
 .prize-card-small .prize-label {
-  font-size: 0.65rem;
+  font-size: 0.8rem;
 }
 
 .prize-card-small .prize-value {
-  font-size: 1.35rem;
+  font-size: 1.6rem;
   margin-bottom: 0.35rem;
 }
 
-.prize-card-small .prize-value::before {
-  font-size: 0.5rem;
+.prize-card-small .valued-at {
+  font-size: 0.65rem;
 }
 
 .prize-card-small p {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   color: var(--warm-gray);
+}
+
+/* More Prizes Collapsible Section */
+.more-prizes-section {
+  grid-column: 1 / -1;
+}
+
+.more-prizes-toggle {
+  display: none;
+}
+
+.more-prizes-content {
+  display: contents;
+}
+
+/* Mobile: Show collapsible behavior */
+@media (max-width: 768px) {
+  .more-prizes-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: var(--soft-taupe);
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    cursor: pointer;
+    transition: background 0.2s ease;
+    margin-bottom: 0.75rem;
+  }
+
+  .more-prizes-toggle:hover {
+    background: var(--warm-gray);
+    color: #fff;
+  }
+
+  .more-prizes-toggle .toggle-icon {
+    width: 12px;
+    height: 12px;
+    position: relative;
+  }
+
+  .more-prizes-toggle .toggle-icon::before,
+  .more-prizes-toggle .toggle-icon::after {
+    content: '';
+    position: absolute;
+    background: currentColor;
+    transition: transform 0.3s ease;
+  }
+
+  .more-prizes-toggle .toggle-icon::before {
+    width: 12px;
+    height: 2px;
+    top: 5px;
+    left: 0;
+  }
+
+  .more-prizes-toggle .toggle-icon::after {
+    width: 2px;
+    height: 12px;
+    top: 0;
+    left: 5px;
+  }
+
+  .more-prizes-section.open .toggle-icon::after {
+    transform: rotate(90deg);
+  }
+
+  .more-prizes-content {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .more-prizes-section.open .more-prizes-content {
+    max-height: 1000px;
+  }
+
+  .more-prizes-content .prize-row {
+    margin-bottom: 0.75rem;
+  }
 }
 
 .total-value {
@@ -1438,7 +1538,7 @@
    SPECS SECTION
    ================================ */
 .specs-section {
-  padding: 3rem 2rem;
+  padding: 2rem 2rem;
   background: var(--cream);
 }
 
@@ -1450,7 +1550,7 @@
 .specs-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 @media (max-width: 700px) {
@@ -1461,7 +1561,7 @@
 
 .specs-card {
   background: var(--warm-white);
-  padding: 1.25rem 1.5rem;
+  padding: 1rem 1.25rem;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
@@ -1475,10 +1575,10 @@
 
 .specs-card h3 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
-  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
   color: var(--charcoal);
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.4rem;
   border-bottom: 1px solid var(--soft-taupe);
 }
 
@@ -1487,8 +1587,8 @@
 }
 
 .specs-list li {
-  padding: 0.4rem 0;
-  font-size: 0.8rem;
+  padding: 0.3rem 0;
+  font-size: 0.95rem;
   color: var(--deep-brown);
   display: flex;
   align-items: flex-start;
@@ -1503,15 +1603,15 @@
   color: var(--brand-gold);
   font-weight: 600;
   flex-shrink: 0;
-  font-size: 0.85rem;
+  font-size: 1rem;
 }
 
 .specs-list li strong {
   color: var(--charcoal);
-  min-width: 70px;
+  min-width: 80px;
   flex-shrink: 0;
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
 }
 
 /* ================================
@@ -1719,6 +1819,52 @@
   font-size: 0.95rem;
   color: var(--deep-brown);
   line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.gallery-capacity {
+  font-size: 0.9rem;
+  color: var(--deep-brown);
+  margin-bottom: 1rem;
+}
+
+.gallery-facilities {
+  margin-top: 1rem;
+}
+
+.gallery-facilities h4 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--warm-gray);
+  margin-bottom: 0.75rem;
+}
+
+.facilities-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--deep-brown);
+}
+
+.facilities-list li {
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.facilities-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--brand-gold);
+}
+
+@media (max-width: 480px) {
+  .facilities-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 .gallery-image {
