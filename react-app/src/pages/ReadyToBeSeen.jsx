@@ -98,6 +98,10 @@ function ReadyToBeSeen() {
               Submit Your Entry — $50
             </button>
             <p className="entry-note">$50 entry fee · Submit up to 6 artworks · <span className="deadline-text">Entries close January 9, 2026</span></p>
+            <div className="trust-badges">
+              <span className="trust-badge"><span className="badge-icon">🔒</span> Secure SSL Checkout</span>
+              <span className="trust-badge"><span className="badge-icon">🇦🇺</span> Australian Owned</span>
+            </div>
           </div>
         </div>
       </section>
@@ -385,7 +389,13 @@ function ReadyToBeSeen() {
               Enter Now
             </button>
 
-            <p className="cta-reassurance">Secure checkout • Instant confirmation • Upload anytime before deadline</p>
+            <div className="trust-badges trust-badges-final">
+              <span className="trust-badge"><span className="badge-icon">🔒</span> Secure SSL Checkout</span>
+              <span className="trust-badge"><span className="badge-icon">🇦🇺</span> Australian Owned & Operated</span>
+              <span className="trust-badge"><span className="badge-icon">⭐</span> Critically Acclaimed</span>
+              <span className="trust-badge"><span className="badge-icon">🏪</span> Proudly Australian Small Business</span>
+            </div>
+            <p className="cta-reassurance">Instant confirmation • Upload anytime before deadline</p>
             <p className="terms-disclaimer">By entering, you agree to the full terms and conditions of the Independent Visions Art Prize.</p>
           </div>
         </div>
