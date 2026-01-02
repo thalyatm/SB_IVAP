@@ -54,7 +54,7 @@ export default async function handler(req, res) {
     if (customerEmail) {
       try {
         await resend.emails.send({
-          from: 'Studio on Brunswick <adminsb@studioonbrunswick.com.au>',
+          from: 'Studio on Brunswick <adminsb@prize.studioonbrunswick.com.au>',
           to: customerEmail,
           subject: 'Welcome to the Independent Visions Art Prize!',
           html: getEmailHtml(customerName),
