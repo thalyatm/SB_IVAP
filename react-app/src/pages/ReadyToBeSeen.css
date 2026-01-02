@@ -57,7 +57,7 @@
 @media (max-width: 768px) {
   .hero-1 {
     margin-top: 0; /* Page-nav now flows naturally, no extra margin needed */
-    padding: 1.25rem 1.25rem 2rem;
+    padding: 2rem 1.25rem 2rem;
     gap: 1rem;
   }
 
@@ -141,6 +141,7 @@
   .hero-image-1 {
     order: -1;
     margin-bottom: 1rem;
+    margin-top: 0.5rem;
   }
 
   .hero-image-1 img {
