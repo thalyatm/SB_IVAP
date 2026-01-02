@@ -1,0 +1,154 @@
+.thank-you-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(145deg, #FAF8F5 0%, #F5F0E8 40%, #E8E0D5 100%);
+  margin-top: 80px;
+}
+
+.thank-you-container {
+  max-width: 600px;
+  text-align: center;
+  background: #FFFFFF;
+  padding: 3rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.thank-you-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #AA9B05 0%, #C4B306 100%);
+  color: #FFFFFF;
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+}
+
+.thank-you-page h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  color: #2D2A26;
+  margin-bottom: 0.75rem;
+}
+
+.thank-you-subtitle {
+  font-size: 1.1rem;
+  color: #8B7E74;
+  margin-bottom: 2rem;
+}
+
+.next-steps {
+  text-align: left;
+  background: #FAF8F5;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border-left: 3px solid #AA9B05;
+}
+
+.next-steps h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  color: #2D2A26;
+  margin-bottom: 1rem;
+}
+
+.next-steps ol {
+  list-style: none;
+  counter-reset: steps;
+  padding: 0;
+  margin: 0;
+}
+
+.next-steps li {
+  counter-increment: steps;
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 0;
+  padding-left: 2.5rem;
+  position: relative;
+  border-bottom: 1px solid #E8E0D5;
+}
+
+.next-steps li:last-child {
+  border-bottom: none;
+}
+
+.next-steps li::before {
+  content: counter(steps);
+  position: absolute;
+  left: 0;
+  top: 0.75rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  background: #AA9B05;
+  color: #FFFFFF;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.next-steps li strong {
+  color: #2D2A26;
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+
+.next-steps li span {
+  color: #8B7E74;
+  font-size: 0.9rem;
+}
+
+.thank-you-details {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: #F5F0E8;
+  border-radius: 4px;
+}
+
+.thank-you-details p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: #4A3F35;
+}
+
+.back-link {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: #25102E;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.back-link:hover {
+  background: #1a0b20;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 16, 47, 0.3);
+}
+
+@media (max-width: 600px) {
+  .thank-you-container {
+    padding: 2rem 1.5rem;
+  }
+
+  .thank-you-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+
+  .next-steps {
+    padding: 1rem;
+  }
+}

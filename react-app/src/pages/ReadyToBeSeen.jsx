@@ -9,6 +9,17 @@ function ReadyToBeSeen() {
     setOpenFaq(openFaq === index ? null : index);
   };
 
+  const trackInitiateCheckout = () => {
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'InitiateCheckout', {
+        value: 50.00,
+        currency: 'AUD',
+        content_name: 'IVAP Entry',
+        content_category: 'Art Prize Entry'
+      });
+    }
+  };
+
   return (
     <div className="page-1">
       {/* Page Navigation */}
@@ -20,7 +31,7 @@ function ReadyToBeSeen() {
             <a href="#eligibility" className="page-nav-link">Eligibility</a>
             <a href="#faq" className="page-nav-link">FAQ</a>
           </div>
-          <a href="https://buy.stripe.com/14AdRb4Hn2FCbn26Jm3wQ00" className="page-nav-cta">Submit Entry</a>
+          <a href="https://buy.stripe.com/14AdRb4Hn2FCbn26Jm3wQ00" className="page-nav-cta" onClick={trackInitiateCheckout}>Submit Entry</a>
         </div>
       </nav>
 
@@ -50,7 +61,7 @@ function ReadyToBeSeen() {
             </div>
           </div>
           <div className="hero-cta-group">
-            <a href="https://buy.stripe.com/14AdRb4Hn2FCbn26Jm3wQ00" className="cta-primary-1">
+            <a href="https://buy.stripe.com/14AdRb4Hn2FCbn26Jm3wQ00" className="cta-primary-1" onClick={trackInitiateCheckout}>
               Submit Your Entry — $50
             </a>
             <p className="entry-note">$50 entry fee · Submit up to 6 artworks · <span className="deadline-text">Entries close Jan 9</span></p>
@@ -327,7 +338,7 @@ function ReadyToBeSeen() {
               </div>
             </div>
 
-            <a href="https://buy.stripe.com/14AdRb4Hn2FCbn26Jm3wQ00" className="cta-primary-1 cta-large">
+            <a href="https://buy.stripe.com/14AdRb4Hn2FCbn26Jm3wQ00" className="cta-primary-1 cta-large" onClick={trackInitiateCheckout}>
               Enter Now
             </a>
 

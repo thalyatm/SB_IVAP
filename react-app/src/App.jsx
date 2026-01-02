@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import ReadyToBeSeen from './pages/ReadyToBeSeen';
+import ThankYou from './pages/ThankYou';
 import './App.css';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
           <Routes>
             <Route path="/" element={<ReadyToBeSeen />} />
             <Route path="/ready-to-be-seen" element={<ReadyToBeSeen />} />
+            <Route path="/thank-you" element={<ThankYou />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
