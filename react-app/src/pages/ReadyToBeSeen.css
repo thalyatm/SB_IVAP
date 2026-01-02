@@ -2091,8 +2091,12 @@
 
 @media (max-width: 700px) {
   .gallery-facilities {
+    text-align: center;
+  }
+
+  .facilities-list {
+    display: inline-grid;
     text-align: left;
-    display: inline-block;
   }
 }
 
