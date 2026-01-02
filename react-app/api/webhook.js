@@ -208,6 +208,7 @@ function getEmailHtml(firstName) {
         Fortitude Valley, Brisbane QLD 4006</span>
           </p>
           <p><a href="mailto:adminsb@studioonbrunswick.com" style="color: #666666; text-decoration: none; font-size: 14px;">adminsb@studioonbrunswick.com</a></p>
+          <p>&nbsp;</p>
         </td>
       </tr>
     </table>
