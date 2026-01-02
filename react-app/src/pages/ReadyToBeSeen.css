@@ -359,6 +359,41 @@
   font-weight: 600;
 }
 
+/* Countdown Timer Styles */
+.countdown-urgent {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  animation: urgencyPulse 2s ease-in-out infinite;
+}
+
+.countdown-badge {
+  font-weight: 700;
+  color: #FFFFFF;
+  background: var(--urgency-red);
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  animation: urgencyPulse 2s ease-in-out infinite;
+}
+
+.trust-item-countdown {
+  background: rgba(196, 69, 54, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.cta-detail-countdown .countdown-value {
+  color: var(--urgency-red);
+  font-weight: 700;
+}
+
+@keyframes urgencyPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
 .save-progress-note {
   font-size: 0.7rem;
   color: var(--warm-gray);

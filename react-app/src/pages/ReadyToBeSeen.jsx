@@ -1,8 +1,12 @@
-import { useState, useCallback, lazy, Suspense } from 'react';
+import { useState, useCallback, useEffect, useMemo, lazy, Suspense } from 'react';
 import './ReadyToBeSeen.css';
 
 // Lazy load CheckoutModal - defers Stripe SDK until checkout opens
 const CheckoutModal = lazy(() => import('../components/CheckoutModal'));
+
+// Deadline: 9PM AEST on January 9, 2026
+// AEST is UTC+10, so 9PM AEST = 11:00 UTC on Jan 9
+const DEADLINE = new Date('2026-01-09T21:00:00+10:00');
 
 // Loading skeleton for checkout modal
 function CheckoutLoader() {
@@ -26,6 +30,67 @@ function ReadyToBeSeen() {
   const [openFaq, setOpenFaq] = useState(null);
   const [showMorePrizes, setShowMorePrizes] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(null);
+
+  // Countdown timer
+  useEffect(() => {
+    const calculateTimeLeft = () => {
+      const now = new Date();
+      const difference = DEADLINE - now;
+
+      if (difference <= 0) {
+        return { expired: true };
+      }
+
+      return {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / (1000 * 60)) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+        expired: false
+      };
+    };
+
+    // Initial calculation
+    setTimeLeft(calculateTimeLeft());
+
+    // Update every second
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  // Format countdown for display
+  const countdownText = useMemo(() => {
+    if (!timeLeft) return 'Loading...';
+    if (timeLeft.expired) return 'Entries Closed';
+
+    const { days, hours, minutes, seconds } = timeLeft;
+
+    if (days > 0) {
+      return `${days}d ${hours}h ${minutes}m left`;
+    } else if (hours > 0) {
+      return `${hours}h ${minutes}m ${seconds}s left`;
+    } else {
+      return `${minutes}m ${seconds}s left`;
+    }
+  }, [timeLeft]);
+
+  // Compact version for trust bar
+  const countdownCompact = useMemo(() => {
+    if (!timeLeft) return 'Loading...';
+    if (timeLeft.expired) return 'Entries Closed';
+
+    const { days, hours, minutes } = timeLeft;
+
+    if (days > 0) {
+      return `${days}d ${hours}h ${minutes}m`;
+    } else {
+      return `${hours}h ${minutes}m`;
+    }
+  }, [timeLeft]);
 
   // Memoized callbacks to prevent unnecessary re-renders
   const toggleFaq = useCallback((index) => {
@@ -97,7 +162,7 @@ function ReadyToBeSeen() {
             <button className="cta-primary-1" onClick={openCheckout}>
               Submit Your Entry — $50
             </button>
-            <p className="entry-note">$50 entry fee · Submit up to 6 artworks · <span className="deadline-text">Entries close January 9, 2026</span></p>
+            <p className="entry-note">$50 entry fee · Submit up to 6 artworks · <span className="deadline-text countdown-urgent">{countdownText}</span></p>
             <div className="trust-badges">
               <span className="trust-badge"><span className="badge-icon">🔒</span> Secure SSL Checkout</span>
               <span className="trust-badge"><span className="badge-icon">🇦🇺</span> Australian Owned</span>
@@ -121,9 +186,9 @@ function ReadyToBeSeen() {
             <span className="trust-icon icon-mentoring"></span>
             <span>Guest Judge: Kate Marek</span>
           </div>
-          <div className="trust-item">
+          <div className="trust-item trust-item-countdown">
             <span className="trust-icon icon-clock"></span>
-            <span>Entries Close January 9, 2026</span>
+            <span className="countdown-badge">{countdownCompact}</span>
           </div>
         </div>
       </section>
@@ -409,9 +474,9 @@ function ReadyToBeSeen() {
                 <span className="label">Artworks</span>
                 <span className="value">Up to 6</span>
               </div>
-              <div className="cta-detail">
-                <span className="label">Deadline</span>
-                <span className="value">January 9, 2026</span>
+              <div className="cta-detail cta-detail-countdown">
+                <span className="label">Time Left</span>
+                <span className="value countdown-value">{countdownCompact}</span>
               </div>
             </div>
 
