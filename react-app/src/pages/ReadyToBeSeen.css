@@ -298,6 +298,8 @@
   border: 2px solid var(--brand-purple);
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .cta-primary-1::before {
@@ -744,6 +746,9 @@
   font-weight: 600;
   letter-spacing: 0.03em;
   transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .page-nav-cta:hover {

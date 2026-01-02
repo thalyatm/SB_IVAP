@@ -1,0 +1,132 @@
+.checkout-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.checkout-modal {
+  background: #FFFFFF;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 8px;
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.checkout-modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #f5f5f5;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.checkout-modal-close:hover {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.checkout-modal-header {
+  padding: 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  background: #FAF8F5;
+}
+
+.checkout-modal-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  color: #2D2A26;
+  margin: 0 0 0.25rem;
+}
+
+.checkout-modal-header p {
+  font-size: 0.9rem;
+  color: #8B7E74;
+  margin: 0;
+}
+
+.checkout-modal-content {
+  padding: 1rem;
+  min-height: 400px;
+}
+
+.checkout-error {
+  text-align: center;
+  padding: 2rem;
+}
+
+.checkout-error p {
+  color: #C44536;
+  margin-bottom: 1rem;
+}
+
+.checkout-error button {
+  padding: 0.75rem 1.5rem;
+  background: #25102E;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.checkout-error button:hover {
+  background: #1a0b20;
+}
+
+/* Style the Stripe embedded checkout */
+.checkout-modal-content iframe {
+  border: none !important;
+}
+
+@media (max-width: 600px) {
+  .checkout-modal {
+    max-height: 95vh;
+    border-radius: 8px 8px 0 0;
+    margin-top: auto;
+  }
+
+  .checkout-modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+}

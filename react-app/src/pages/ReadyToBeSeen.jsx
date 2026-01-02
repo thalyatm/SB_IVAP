@@ -1,23 +1,19 @@
 import { useState } from 'react';
+import CheckoutModal from '../components/CheckoutModal';
 import './ReadyToBeSeen.css';
 
 function ReadyToBeSeen() {
   const [openFaq, setOpenFaq] = useState(null);
   const [showMorePrizes, setShowMorePrizes] = useState(false);
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
 
   const toggleFaq = (index) => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
-  const trackInitiateCheckout = () => {
-    if (typeof fbq !== 'undefined') {
-      fbq('track', 'InitiateCheckout', {
-        value: 50.00,
-        currency: 'AUD',
-        content_name: 'IVAP Entry',
-        content_category: 'Art Prize Entry'
-      });
-    }
+  const openCheckout = (e) => {
+    e.preventDefault();
+    setIsCheckoutOpen(true);
   };
 
   return (
@@ -31,7 +27,7 @@ function ReadyToBeSeen() {
             <a href="#eligibility" className="page-nav-link">Eligibility</a>
             <a href="#faq" className="page-nav-link">FAQ</a>
           </div>
-          <a href="https://buy.stripe.com/14AdRb4Hn2FCbn26Jm3wQ00" className="page-nav-cta" onClick={trackInitiateCheckout}>Submit Entry</a>
+          <button className="page-nav-cta" onClick={openCheckout}>Submit Entry</button>
         </div>
       </nav>
 
@@ -61,9 +57,9 @@ function ReadyToBeSeen() {
             </div>
           </div>
           <div className="hero-cta-group">
-            <a href="https://buy.stripe.com/14AdRb4Hn2FCbn26Jm3wQ00" className="cta-primary-1" onClick={trackInitiateCheckout}>
+            <button className="cta-primary-1" onClick={openCheckout}>
               Submit Your Entry — $50
-            </a>
+            </button>
             <p className="entry-note">$50 entry fee · Submit up to 6 artworks · <span className="deadline-text">Entries close Jan 9</span></p>
           </div>
         </div>
@@ -338,9 +334,9 @@ function ReadyToBeSeen() {
               </div>
             </div>
 
-            <a href="https://buy.stripe.com/14AdRb4Hn2FCbn26Jm3wQ00" className="cta-primary-1 cta-large" onClick={trackInitiateCheckout}>
+            <button className="cta-primary-1 cta-large" onClick={openCheckout}>
               Enter Now
-            </a>
+            </button>
 
             <p className="cta-reassurance">Secure checkout • Instant confirmation • Upload anytime before deadline</p>
           </div>
@@ -356,6 +352,11 @@ function ReadyToBeSeen() {
           adminsb@studioonbrunswick.com
         </p>
       </footer>
+
+      <CheckoutModal
+        isOpen={isCheckoutOpen}
+        onClose={() => setIsCheckoutOpen(false)}
+      />
     </div>
   );
 }
