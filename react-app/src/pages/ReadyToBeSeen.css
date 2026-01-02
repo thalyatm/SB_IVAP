@@ -952,7 +952,7 @@
   .page-nav {
     position: relative;
     top: auto;
-    margin-top: 72px; /* Space for fixed header base height */
+    margin-top: 95px; /* Space for wrapped header */
     padding: 0.5rem 1rem;
   }
 
@@ -972,7 +972,7 @@
 
 @media (max-width: 480px) {
   .page-nav {
-    margin-top: 56px; /* Space for fixed header base height */
+    margin-top: 80px; /* Space for wrapped header */
     padding: 0.4rem 0.75rem;
   }
 
@@ -2662,7 +2662,7 @@
 
   .page-nav {
     padding: 0.35rem 0.5rem;
-    margin-top: 48px; /* Space for fixed header */
+    margin-top: 65px; /* Space for wrapped header */
   }
 
   .page-nav-links {
