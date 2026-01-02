@@ -56,7 +56,7 @@
 
 @media (max-width: 768px) {
   .hero-1 {
-    margin-top: 155px; /* Account for wrapped header + page-nav */
+    margin-top: 160px; /* Account for wrapped header + page-nav */
     padding: 1.25rem 1.25rem 2rem;
     gap: 1rem;
   }
@@ -908,7 +908,7 @@
 @media (max-width: 768px) {
   .page-nav {
     padding: 0.5rem 1rem;
-    top: 115px; /* Below header */
+    top: 120px; /* Below wrapped header */
   }
 
   .page-nav-links {
@@ -928,7 +928,7 @@
 @media (max-width: 480px) {
   .page-nav {
     padding: 0.4rem 0.75rem;
-    top: 101px; /* Below header */
+    top: 95px; /* Below wrapped header */
   }
 
   .page-nav-container {
@@ -2617,7 +2617,7 @@
 
   .page-nav {
     padding: 0.35rem 0.5rem;
-    top: 85px; /* Below header */
+    top: 78px; /* Below wrapped header on extra-small screens */
   }
 
   .page-nav-links {
