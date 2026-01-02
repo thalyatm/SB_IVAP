@@ -1,6 +1,5 @@
 import Stripe from 'stripe';
 import { Resend } from 'resend';
-import { buffer } from 'micro';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -11,6 +10,19 @@ export const config = {
   },
 };
 
+async function getRawBody(req) {
+  return new Promise((resolve, reject) => {
+    let data = '';
+    req.on('data', (chunk) => {
+      data += chunk;
+    });
+    req.on('end', () => {
+      resolve(Buffer.from(data));
+    });
+    req.on('error', reject);
+  });
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -19,40 +31,37 @@ export default async function handler(req, res) {
   let event;
 
   try {
-    const buf = await buffer(req);
+    const rawBody = await getRawBody(req);
     const sig = req.headers['stripe-signature'];
 
     event = stripe.webhooks.constructEvent(
-      buf,
+      rawBody,
       sig,
       process.env.STRIPE_WEBHOOK_SECRET
     );
   } catch (err) {
-    console.error('Webhook signature verification failed:', err.message);
+    console.error('Webhook error:', err.message);
     return res.status(400).json({ error: `Webhook Error: ${err.message}` });
   }
 
-  // Handle the checkout.session.completed event
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object;
-
     const customerEmail = session.customer_details?.email;
     const customerName = session.customer_details?.name?.split(' ')[0] || 'Artist';
 
-    console.log('Processing checkout for:', customerEmail);
+    console.log('Checkout completed for:', customerEmail);
 
     if (customerEmail) {
       try {
-        const emailResult = await resend.emails.send({
+        await resend.emails.send({
           from: 'Studio on Brunswick <adminsb@studioonbrunswick.com.au>',
           to: customerEmail,
           subject: 'Welcome to the Independent Visions Art Prize!',
           html: getEmailHtml(customerName),
         });
-        console.log('Email sent successfully:', emailResult);
+        console.log('Email sent to:', customerEmail);
       } catch (error) {
-        console.error('Failed to send email:', error);
-        // Don't return error - we still want to acknowledge the webhook
+        console.error('Email error:', error);
       }
     }
   }
@@ -79,9 +88,7 @@ function getEmailHtml(firstName) {
           <h2 style="color: #111111; margin-top: 0;">
             Welcome to the Independent Visions Art Prize!
           </h2>
-          <p>
-            Hi ${firstName},
-          </p>
+          <p>Hi ${firstName},</p>
           <p>
             Thank you for entering. You have successfully secured your spot in the
             <a href="https://prize.studioonbrunswick.com.au/" style="color: #333333; font-weight: bold;">Independent Visions Art Prize</a> (formerly our annual Summer Showcase).
@@ -95,9 +102,7 @@ function getEmailHtml(firstName) {
             <strong>Kate Marek</strong> (2025 winner of the Queens Wharf Brisbane Art Prize).
           </p>
           <hr style="border: 0; border-top: 1px solid #eeeeee; margin: 30px 0;"/>
-          <h3 style="color: #111111;">
-            Step 2: Complete Your Application
-          </h3>
+          <h3 style="color: #111111;">Step 2: Complete Your Application</h3>
           <p><strong>Your entry fee is paid.</strong> The next step is to provide your artist details and upload your work via the private link below.</p>
           <table border="0" cellpadding="0" cellspacing="0" style="margin: 20px 0;">
             <tr>
@@ -108,13 +113,8 @@ function getEmailHtml(firstName) {
           </table>
           <p style="font-size: 14px; color: #666666;"><em>You can return to the form and complete it over time before <strong>January 9</strong>.</em></p>
           <div style="background-color: #f9f9f9; padding: 20px; border-radius: 4px; margin-top: 20px; border-left: 4px solid #333;">
-            <h4 style="margin-top: 0;">
-              📋 Artwork Requirements
-            </h4>
-            <p style="margin-bottom: 10px; font-size: 14px;">
-              You may submit up to
-              <strong>six works</strong>. All mediums are welcome.
-            </p>
+            <h4 style="margin-top: 0;">📋 Artwork Requirements</h4>
+            <p style="margin-bottom: 10px; font-size: 14px;">You may submit up to <strong>six works</strong>. All mediums are welcome.</p>
             <ul style="padding-left: 20px; margin-bottom: 0; font-size: 14px;">
               <li><strong>2D Works:</strong> 50 × 50 cm or equivalent area (e.g., 40 × 60 cm).</li>
               <li><strong>3D Works:</strong> Suggested maximum size 100 cm in any direction.</li>
@@ -130,20 +130,11 @@ function getEmailHtml(firstName) {
             <li>Upload clear photos of each work (including Title, Medium, and Size).</li>
           </ul>
           <hr style="border: 0; border-top: 1px solid #eeeeee; margin: 30px 0;"/>
-          <h3 style="color: #111111;">
-            The Prize Breakdown
-          </h3>
-          <p>
-            More than
-            <strong>$11,399 AUD</strong> in opportunities designed to elevate your artistic career.
-          </p>
+          <h3 style="color: #111111;">The Prize Breakdown</h3>
+          <p>More than <strong>$11,399 AUD</strong> in opportunities designed to elevate your artistic career.</p>
           <div class="prize-box" style="border: 1px solid #e0e0e0; border-radius: 4px; padding: 20px; margin-bottom: 15px;">
-            <h4 style="margin: 0 0 5px 0; color: #000;">
-              🏆 First Prize
-            </h4>
-            <p style="margin: 0 0 10px 0; font-size: 14px; font-weight: bold; color: #666;">
-              Total Value: $3,449 AUD
-            </p>
+            <h4 style="margin: 0 0 5px 0; color: #000;">🏆 First Prize</h4>
+            <p style="margin: 0 0 10px 0; font-size: 14px; font-weight: bold; color: #666;">Total Value: $3,449 AUD</p>
             <ul style="padding-left: 20px; margin: 0; font-size: 14px;">
               <li>One week solo exhibition ($1,050)</li>
               <li>Six 1:1 coaching/mentoring sessions ($1,350)</li>
@@ -153,12 +144,8 @@ function getEmailHtml(firstName) {
             </ul>
           </div>
           <div class="prize-box" style="border: 1px solid #e0e0e0; border-radius: 4px; padding: 20px; margin-bottom: 15px;">
-            <h4 style="margin: 0 0 5px 0; color: #000;">
-              🚀 SB Artist Accelerator Award
-            </h4>
-            <p style="margin: 0 0 10px 0; font-size: 14px; font-weight: bold; color: #666;">
-              Total Value: $2,250 AUD
-            </p>
+            <h4 style="margin: 0 0 5px 0; color: #000;">🚀 SB Artist Accelerator Award</h4>
+            <p style="margin: 0 0 10px 0; font-size: 14px; font-weight: bold; color: #666;">Total Value: $2,250 AUD</p>
             <ul style="padding-left: 20px; margin: 0; font-size: 14px;">
               <li>Six 1:1 coaching/mentoring sessions ($1,350)</li>
               <li>Social media audit ($300)</li>
@@ -166,12 +153,8 @@ function getEmailHtml(firstName) {
             </ul>
           </div>
           <div class="prize-box" style="border: 1px solid #e0e0e0; border-radius: 4px; padding: 20px; margin-bottom: 15px;">
-            <h4 style="margin: 0 0 5px 0; color: #000;">
-              🥈 Second Prize
-            </h4>
-            <p style="margin: 0 0 10px 0; font-size: 14px; font-weight: bold; color: #666;">
-              Total Value: $2,100 AUD
-            </p>
+            <h4 style="margin: 0 0 5px 0; color: #000;">🥈 Second Prize</h4>
+            <p style="margin: 0 0 10px 0; font-size: 14px; font-weight: bold; color: #666;">Total Value: $2,100 AUD</p>
             <ul style="padding-left: 20px; margin: 0; font-size: 14px;">
               <li>Place in a 2026 group show ($450)</li>
               <li>Four 1:1 coaching/mentoring sessions ($900)</li>
@@ -188,24 +171,18 @@ function getEmailHtml(firstName) {
           </ul>
           <p><a href="https://prize.studioonbrunswick.com.au/" style="color: #000000; font-weight: bold; text-decoration: underline;">View full details and terms online &rarr;</a></p>
           <hr style="border: 0; border-top: 1px solid #eeeeee; margin: 30px 0;"/>
-          <h3 style="color: #111111;">
-            Key Dates
-          </h3>
+          <h3 style="color: #111111;">Key Dates</h3>
           <ul style="padding-left: 20px;">
             <li><strong>Entries close:</strong> January 9</li>
             <li><strong>Notification:</strong> Successful applicants notified the following Friday by email.</li>
             <li><strong>Exhibition:</strong> February 4 – February 22 at Studio on Brunswick.</li>
           </ul>
-          <p>
-            This is a career-building opportunity designed to support artists who are ready to be seen, supported, and taken seriously. I look forward to reviewing your submission.
-          </p>
-          <p>
-            Warmly,
-          </p>
+          <p>This is a career-building opportunity designed to support artists who are ready to be seen, supported, and taken seriously. I look forward to reviewing your submission.</p>
+          <p>Warmly,</p>
           <p><strong>Team Bruns 💛</strong><br/>
             <span style="color: #666666; font-size: 14px;">Studio on Brunswick<br/>
-        California Lane, 2/22 McLachlan Street<br/>
-        Fortitude Valley, Brisbane QLD 4006</span>
+            California Lane, 2/22 McLachlan Street<br/>
+            Fortitude Valley, Brisbane QLD 4006</span>
           </p>
           <p><a href="mailto:adminsb@studioonbrunswick.com.au" style="color: #666666; text-decoration: none; font-size: 14px;">adminsb@studioonbrunswick.com.au</a></p>
           <p>&nbsp;</p>
