@@ -163,7 +163,7 @@ function ReadyToBeSeen() {
                     <p>Affiliate award package</p>
                   </div>
                   <div className="prize-card-small">
-                    <div className="prize-label">Highly Commended Affiliate</div>
+                    <div className="prize-label">Highly Commended Affiliate Award</div>
                     <div className="prize-value"><span className="valued-at">Valued at</span> $400</div>
                     <p>Affiliate award package</p>
                   </div>
