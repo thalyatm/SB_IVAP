@@ -141,7 +141,7 @@ function ReadyToBeSeen() {
         <div className="hero-content-1">
           <p className="eyebrow-1">Independent Visions Art Prize</p>
           <h1 className="headline-1">Your work deserves a wall,<br/><span className="headline-accent">not a drawer.</span></h1>
-          <p className="subheadline-1">Submit your work for the chance to win prizes, exhibition space, and career-building mentorship.</p>
+          <p className="subheadline-1">Accelerate your career with $11k+ in prizes, a curated exhibition at Studio on Brunswick, and 1-on-1 mentorship from industry leaders.</p>
           <p className="location-note-1">Open to emerging and independent artists Australia-wide</p>
           <div className="hero-details-1">
             <div className="hero-detail">
