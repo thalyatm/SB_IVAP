@@ -44,7 +44,7 @@ export default async function handler(req, res) {
     if (customerEmail) {
       try {
         const emailResult = await resend.emails.send({
-          from: 'Studio on Brunswick <adminsb@studioonbrunswick.com>',
+          from: 'Studio on Brunswick <adminsb@studioonbrunswick.com.au>',
           to: customerEmail,
           subject: 'Welcome to the Independent Visions Art Prize!',
           html: getEmailHtml(customerName),
@@ -207,7 +207,7 @@ function getEmailHtml(firstName) {
         California Lane, 2/22 McLachlan Street<br/>
         Fortitude Valley, Brisbane QLD 4006</span>
           </p>
-          <p><a href="mailto:adminsb@studioonbrunswick.com" style="color: #666666; text-decoration: none; font-size: 14px;">adminsb@studioonbrunswick.com</a></p>
+          <p><a href="mailto:adminsb@studioonbrunswick.com.au" style="color: #666666; text-decoration: none; font-size: 14px;">adminsb@studioonbrunswick.com.au</a></p>
           <p>&nbsp;</p>
         </td>
       </tr>
