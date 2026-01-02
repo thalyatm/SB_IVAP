@@ -42,7 +42,7 @@ function ThankYou() {
         </div>
 
         <div className="thank-you-details">
-          <p><strong>Exhibition Dates:</strong> February 4-22, 2026</p>
+          <p><strong>Exhibition Dates:</strong> 4–22 February 2026</p>
           <p><strong>Location:</strong> Studio on Brunswick Pop Up Gallery, Fortitude Valley</p>
         </div>
 

@@ -53,7 +53,7 @@ function ReadyToBeSeen() {
             <div className="hero-detail">
               <span className="detail-value">Professional</span>
               <span className="detail-label">Exhibition</span>
-              <span className="detail-sub">Feb 2026 · Brisbane</span>
+              <span className="detail-sub">4–22 February 2026 · Brisbane</span>
             </div>
           </div>
           <div className="hero-cta-group">
@@ -206,7 +206,7 @@ function ReadyToBeSeen() {
           </div>
 
           <div className="exhibition-dates">
-            <p><strong>Exhibition Dates:</strong> February 4, 2026 to February 22, 2026</p>
+            <p><strong>Exhibition Dates:</strong> 4–22 February 2026</p>
           </div>
         </div>
       </section>
