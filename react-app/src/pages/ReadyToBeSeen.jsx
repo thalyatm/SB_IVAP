@@ -226,6 +226,7 @@ function ReadyToBeSeen() {
                 <li><span className="check">✓</span> Emerging and independent artists welcome</li>
                 <li><span className="check">✓</span> All mediums accepted</li>
                 <li><span className="check">✓</span> Multiple entries allowed</li>
+                <li><span className="check">✓</span> Applicants must be 18 years or older</li>
               </ul>
             </div>
 
