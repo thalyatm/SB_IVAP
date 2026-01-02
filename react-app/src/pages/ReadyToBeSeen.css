@@ -630,6 +630,23 @@
   color: var(--brand-gold);
 }
 
+.trust-emoji {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .trust-emoji {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 359px) {
+  .trust-emoji {
+    font-size: 0.75rem;
+  }
+}
+
 @media (max-width: 768px) {
   .trust-bar-container {
     gap: 0.75rem;

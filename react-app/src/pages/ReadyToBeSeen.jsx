@@ -175,19 +175,19 @@ function ReadyToBeSeen() {
       <section className="trust-bar">
         <div className="trust-bar-container">
           <div className="trust-item">
-            <span className="trust-icon icon-prize"></span>
+            <span className="trust-emoji">🏆</span>
             <span>$11,399+ in Prizes</span>
           </div>
           <div className="trust-item">
-            <span className="trust-icon icon-gallery"></span>
+            <span className="trust-emoji">🎨</span>
             <span>8 Award Categories</span>
           </div>
           <div className="trust-item">
-            <span className="trust-icon icon-mentoring"></span>
+            <span className="trust-emoji">⭐</span>
             <span>Guest Judge: Kate Marek</span>
           </div>
           <div className="trust-item trust-item-countdown">
-            <span className="trust-icon icon-clock"></span>
+            <span className="trust-emoji">⏰</span>
             <span className="countdown-badge">{countdownCompact}</span>
           </div>
         </div>
