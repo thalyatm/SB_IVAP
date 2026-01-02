@@ -56,7 +56,7 @@
 
 @media (max-width: 768px) {
   .hero-1 {
-    margin-top: 160px; /* Account for wrapped header + page-nav */
+    margin-top: 0; /* Page-nav now flows naturally, no extra margin needed */
     padding: 1.25rem 1.25rem 2rem;
     gap: 1rem;
   }
@@ -80,7 +80,7 @@
 @media (max-width: 480px) {
   .hero-1 {
     padding: 1rem 1rem 1.5rem;
-    margin-top: 130px; /* Tighter fit below nav */
+    margin-top: 0; /* Page-nav flows naturally */
     gap: 0.75rem;
   }
 
@@ -907,8 +907,10 @@
 
 @media (max-width: 768px) {
   .page-nav {
+    position: relative;
+    top: auto;
+    margin-top: 72px; /* Space for fixed header base height */
     padding: 0.5rem 1rem;
-    top: 120px; /* Below wrapped header */
   }
 
   .page-nav-links {
@@ -927,8 +929,8 @@
 
 @media (max-width: 480px) {
   .page-nav {
+    margin-top: 56px; /* Space for fixed header base height */
     padding: 0.4rem 0.75rem;
-    top: 95px; /* Below wrapped header */
   }
 
   .page-nav-container {
@@ -2542,7 +2544,7 @@
 @media (max-width: 359px) {
   .hero-1 {
     padding: 0.75rem 0.75rem 1rem;
-    margin-top: 110px; /* Tighter fit below nav */
+    margin-top: 0; /* Page-nav flows naturally */
     gap: 0.5rem;
   }
 
@@ -2617,7 +2619,7 @@
 
   .page-nav {
     padding: 0.35rem 0.5rem;
-    top: 78px; /* Below wrapped header on extra-small screens */
+    margin-top: 48px; /* Space for fixed header */
   }
 
   .page-nav-links {
@@ -2840,7 +2842,7 @@
 @media (min-width: 390px) and (max-width: 430px) {
   .hero-1 {
     padding: 1rem 1rem 1.25rem;
-    margin-top: 130px;
+    margin-top: 0; /* Page-nav flows naturally */
   }
 
   /* Hero image hidden via 480px breakpoint - no need to style */
