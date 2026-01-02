@@ -54,10 +54,16 @@
   }
 }
 
+@media (max-width: 768px) {
+  .hero-1 {
+    margin-top: 160px; /* Account for wrapped header + page-nav */
+  }
+}
+
 @media (max-width: 480px) {
   .hero-1 {
     padding: 1.5rem 1rem;
-    margin-top: 100px;
+    margin-top: 140px; /* Account for wrapped header + page-nav */
   }
 }
 
@@ -102,6 +108,7 @@
   width: 100%;
   max-width: 600px;
   height: auto;
+  aspect-ratio: 3 / 2; /* Prevents CLS by reserving space */
   object-fit: cover;
   border-radius: 4px;
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
@@ -685,9 +692,7 @@
    PAGE NAVIGATION
    ================================ */
 .page-nav {
-  background: rgba(250, 248, 245, 0.97);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: #FAF8F5; /* Solid background instead of rgba to prevent flashing */
   border-bottom: 1px solid var(--soft-taupe);
   padding: 0.6rem 2rem;
   position: fixed;
@@ -695,8 +700,12 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  transition: box-shadow 0.3s ease;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  /* Force GPU layer to prevent scroll flashing */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .page-nav-container {
@@ -715,7 +724,7 @@
 
 .page-nav-link {
   text-decoration: none;
-  color: var(--warm-gray);
+  color: var(--deep-brown); /* Darker for better contrast */
   font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -764,9 +773,10 @@
   box-shadow: 0 4px 12px rgba(37, 16, 47, 0.25);
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .page-nav {
     padding: 0.5rem 1rem;
+    top: 115px; /* Below header */
   }
 
   .page-nav-links {
@@ -786,7 +796,7 @@
 @media (max-width: 480px) {
   .page-nav {
     padding: 0.4rem 0.75rem;
-    top: 60px;
+    top: 101px; /* Below header */
   }
 
   .page-nav-container {
@@ -821,7 +831,7 @@
 
 .section-subtitle {
   text-align: center;
-  color: var(--warm-gray);
+  color: var(--deep-brown); /* Darker for better contrast */
   font-size: 1.05rem;
   max-width: 600px;
   margin: 0 auto 3rem;
@@ -1074,7 +1084,7 @@
   letter-spacing: 0.1em;
   display: block;
   margin-bottom: 0.15rem;
-  opacity: 0.7;
+  opacity: 0.85; /* Increased for better contrast */
   font-weight: 400;
 }
 
@@ -1086,7 +1096,7 @@
 }
 
 .item-value {
-  color: var(--warm-gray);
+  color: #6B5E54; /* Darker than warm-gray for better contrast */
   font-size: 0.85rem;
 }
 
@@ -1442,6 +1452,14 @@
 
 .timeline-step-card p strong {
   color: var(--brand-gold);
+}
+
+.timeline-step-card .step-note {
+  font-size: 0.75rem;
+  font-style: italic;
+  opacity: 0.9;
+  margin-top: 0.5rem;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .timeline-connector-dashed {
@@ -1844,12 +1862,14 @@
   margin-top: 1rem;
 }
 
-.gallery-facilities h4 {
+.gallery-facilities .facilities-heading {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--warm-gray);
   margin-bottom: 0.75rem;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
 }
 
 .facilities-list {
@@ -1889,6 +1909,8 @@
 .gallery-image img {
   width: 100%;
   height: auto;
+  aspect-ratio: 3 / 2; /* Prevents CLS by reserving space */
+  object-fit: cover;
   border-radius: 4px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
@@ -1947,6 +1969,17 @@
 
 .faq-item:hover {
   background: var(--warm-white);
+}
+
+.faq-item:focus {
+  outline: 2px solid var(--brand-gold);
+  outline-offset: 2px;
+  background: var(--warm-white);
+}
+
+.faq-item:focus-visible {
+  outline: 2px solid var(--brand-gold);
+  outline-offset: 2px;
 }
 
 .faq-item h3 {
@@ -2117,6 +2150,13 @@
   color: var(--warm-gray);
 }
 
+.terms-disclaimer {
+  margin-top: 1rem;
+  font-size: 0.7rem;
+  color: var(--warm-gray);
+  opacity: 0.8;
+}
+
 @media (max-width: 480px) {
   .final-cta-1 {
     padding: 2rem 1rem;
@@ -2242,3 +2282,592 @@
 .hero-content-1 .location-note-1 { animation-delay: 0.35s; }
 .hero-content-1 .hero-details-1 { animation-delay: 0.4s; }
 .hero-content-1 .hero-cta-group { animation-delay: 0.5s; }
+
+/* ================================
+   RESPONSIVE REFINEMENTS
+   ================================ */
+
+/* Extra-small mobile (320-359px) */
+@media (max-width: 359px) {
+  .hero-1 {
+    padding: 1.25rem 0.75rem;
+    margin-top: 115px; /* Account for wrapped header + page-nav */
+    gap: 1rem;
+  }
+
+  .hero-image-1 img {
+    max-width: 220px;
+  }
+
+  .eyebrow-1 {
+    font-size: 0.5rem;
+  }
+
+  .headline-1 {
+    font-size: 1.5rem;
+  }
+
+  .subheadline-1 {
+    font-size: 0.8rem;
+  }
+
+  .location-note-1 {
+    font-size: 0.55rem;
+  }
+
+  .hero-details-1 {
+    padding: 0.5rem;
+    gap: 0.35rem;
+  }
+
+  .detail-value {
+    font-size: 1rem;
+  }
+
+  .detail-label {
+    font-size: 0.5rem;
+  }
+
+  .detail-sub {
+    font-size: 0.45rem;
+  }
+
+  .cta-primary-1 {
+    padding: 0.6rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .entry-note {
+    font-size: 0.65rem;
+  }
+
+  .trust-bar {
+    padding: 0.5rem;
+  }
+
+  .trust-bar-container {
+    gap: 0.2rem 0.35rem;
+  }
+
+  .trust-item {
+    font-size: 0.55rem;
+    padding: 0.15rem 0;
+    gap: 0.35rem;
+  }
+
+  .trust-icon {
+    width: 10px;
+    height: 10px;
+  }
+
+  .page-nav {
+    padding: 0.35rem 0.5rem;
+    top: 85px; /* Below header */
+  }
+
+  .page-nav-links {
+    gap: 0.35rem;
+  }
+
+  .page-nav-link {
+    font-size: 0.55rem;
+  }
+
+  .page-nav-cta {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.55rem;
+  }
+
+  .section-title-1 {
+    font-size: 1.35rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .benefit-grid-1 {
+    gap: 0.5rem;
+  }
+
+  .benefit-card-1 {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .benefit-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+  }
+
+  .benefit-card-1 h3 {
+    font-size: 0.75rem;
+  }
+
+  .benefit-card-1 p {
+    font-size: 0.6rem;
+  }
+
+  .why-section {
+    padding: 2rem 0.75rem;
+  }
+
+  .prizes-section {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .prize-card {
+    padding: 0.75rem;
+  }
+
+  .prize-label {
+    font-size: 0.6rem;
+  }
+
+  .prize-value {
+    font-size: 1.35rem;
+  }
+
+  .prize-includes {
+    font-size: 0.65rem;
+  }
+
+  .prize-card-small {
+    padding: 0.6rem;
+  }
+
+  .prize-card-small .prize-value {
+    font-size: 1.1rem;
+  }
+
+  .prize-card-small p {
+    font-size: 0.6rem;
+  }
+
+  .total-value {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.6rem;
+  }
+
+  .total-value strong {
+    font-size: 0.9rem;
+  }
+
+  .how-section {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .timeline-step-card {
+    padding: 0.6rem;
+  }
+
+  .step-number {
+    width: 24px;
+    height: 24px;
+    font-size: 0.8rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .timeline-step-card h3 {
+    font-size: 0.7rem;
+  }
+
+  .timeline-step-card p {
+    font-size: 0.6rem;
+  }
+
+  .timeline-connector-dashed {
+    height: 10px;
+  }
+
+  .exhibition-dates {
+    padding: 0.4rem 0.5rem;
+  }
+
+  .exhibition-dates p {
+    font-size: 0.65rem;
+  }
+
+  .specs-section {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .specs-card {
+    padding: 0.75rem;
+  }
+
+  .specs-card h3 {
+    font-size: 0.95rem;
+  }
+
+  .specs-list li {
+    font-size: 0.7rem;
+  }
+
+  .gallery-section {
+    padding: 2rem 0.75rem;
+  }
+
+  .gallery-content h2 {
+    font-size: 1.35rem;
+  }
+
+  .gallery-location {
+    font-size: 0.75rem;
+  }
+
+  .gallery-description {
+    font-size: 0.8rem;
+  }
+
+  .facilities-list {
+    font-size: 0.75rem;
+  }
+
+  .faq-section {
+    padding: 2rem 0.75rem;
+  }
+
+  .faq-item {
+    padding: 0.75rem;
+  }
+
+  .faq-item h3 {
+    font-size: 0.85rem;
+  }
+
+  .faq-item p {
+    font-size: 0.75rem;
+  }
+
+  .final-cta-1 {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .final-cta-1 h2 {
+    font-size: 1.2rem;
+  }
+
+  .final-cta-1 > .final-cta-content > p {
+    font-size: 0.8rem;
+  }
+
+  .final-cta-box {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .cta-details {
+    gap: 0.75rem;
+  }
+
+  .cta-detail .label {
+    font-size: 0.5rem;
+  }
+
+  .cta-detail .value {
+    font-size: 0.9rem;
+  }
+
+  .footer-1 {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .footer-logo-1 {
+    font-size: 1rem;
+  }
+
+  .footer-address-1 {
+    font-size: 0.65rem;
+  }
+}
+
+/* Small mobile (390-430px) - common iPhone sizes */
+@media (min-width: 390px) and (max-width: 430px) {
+  .hero-1 {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .hero-image-1 img {
+    max-width: 300px;
+  }
+
+  .headline-1 {
+    font-size: 1.85rem;
+  }
+
+  .hero-details-1 {
+    gap: 0.6rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .detail-value {
+    font-size: 1.15rem;
+  }
+
+  .benefit-grid-1 {
+    gap: 0.85rem;
+  }
+
+  .benefit-card-1 {
+    padding: 1rem 0.85rem;
+  }
+
+  .benefit-card-1 h3 {
+    font-size: 0.85rem;
+  }
+
+  .benefit-card-1 p {
+    font-size: 0.7rem;
+  }
+
+  .timeline-step-card {
+    padding: 0.85rem;
+  }
+
+  .step-number {
+    width: 30px;
+    height: 30px;
+    font-size: 0.95rem;
+  }
+
+  .timeline-step-card h3 {
+    font-size: 0.8rem;
+  }
+
+  .timeline-step-card p {
+    font-size: 0.7rem;
+  }
+}
+
+/* Tablet portrait/landscape transition (820px) */
+@media (min-width: 769px) and (max-width: 850px) {
+  .hero-1 {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .hero-image-1 {
+    order: -1;
+  }
+
+  .hero-image-1 img {
+    max-width: 400px;
+  }
+
+  .hero-content-1 {
+    text-align: center;
+    max-width: 100%;
+    align-items: center;
+  }
+
+  .subheadline-1 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .benefit-grid-1 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .prize-stack {
+    grid-template-columns: 1fr;
+  }
+
+  .prize-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .timeline {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .timeline-connector-dashed {
+    width: 2px;
+    height: 30px;
+    background: repeating-linear-gradient(
+      180deg,
+      var(--brand-gold) 0,
+      var(--brand-gold) 6px,
+      transparent 6px,
+      transparent 12px
+    );
+  }
+
+  .timeline-step-card {
+    max-width: 400px;
+    width: 100%;
+  }
+}
+
+/* Large tablet (851-900px) - bridge to desktop */
+@media (min-width: 851px) and (max-width: 900px) {
+  .hero-1 {
+    gap: 2rem;
+    padding: 2rem 2rem 3rem;
+  }
+
+  .hero-image-1 img {
+    max-width: 450px;
+  }
+
+  .benefit-grid-1 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .benefit-card-1 {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Desktop refinements (1024px) */
+@media (min-width: 1024px) {
+  .hero-1 {
+    padding: 3rem 5rem 4rem;
+  }
+
+  .prizes-container,
+  .how-container,
+  .specs-container,
+  .faq-container {
+    max-width: 950px;
+  }
+}
+
+/* Large desktop (1280px+) */
+@media (min-width: 1280px) {
+  /* Page nav needs more top offset due to taller header at this breakpoint */
+  .page-nav {
+    top: 85px;
+  }
+
+  .hero-1 {
+    padding: 3.5rem 6rem 4.5rem;
+    gap: 4rem;
+  }
+
+  .hero-content-1 {
+    max-width: 550px;
+  }
+
+  .hero-image-1 img {
+    max-width: 650px;
+  }
+
+  .headline-1 {
+    font-size: 3rem;
+  }
+
+  .subheadline-1 {
+    font-size: 1.05rem;
+  }
+
+  .prizes-container,
+  .how-container,
+  .specs-container,
+  .faq-container {
+    max-width: 1000px;
+  }
+
+  .why-container,
+  .judge-container,
+  .gallery-container {
+    max-width: 1050px;
+  }
+
+  .benefit-card-1 {
+    padding: 2rem 1.5rem;
+  }
+
+  .benefit-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+  }
+
+  .prize-card {
+    padding: 1.5rem;
+  }
+
+  .timeline-step-card {
+    max-width: 320px;
+    padding: 2.5rem 2rem;
+  }
+
+  .step-number {
+    width: 56px;
+    height: 56px;
+    font-size: 1.6rem;
+  }
+}
+
+/* Extra large desktop (1440px+) */
+@media (min-width: 1440px) {
+  /* Page nav needs more top offset due to taller header at this breakpoint */
+  .page-nav {
+    top: 96px;
+  }
+
+  /* Hero section - use large padding to center content while keeping full-width background */
+  .hero-1 {
+    padding: 4rem calc((100% - 1400px) / 2 + 2rem) 5rem;
+  }
+
+  .hero-image-1 img {
+    max-width: 700px;
+  }
+
+  .headline-1 {
+    font-size: 3.25rem;
+  }
+
+  .section-title-1 {
+    font-size: 2.75rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.15rem;
+  }
+
+  /* Constrain INNER containers, not outer sections (to preserve full-width backgrounds) */
+  .why-container,
+  .prizes-container,
+  .how-container,
+  .specs-container,
+  .judge-container,
+  .gallery-container,
+  .faq-container,
+  .final-cta-content {
+    max-width: 1100px;
+  }
+
+  .benefit-grid-1 {
+    gap: 2rem;
+  }
+
+  .benefit-card-1 h3 {
+    font-size: 1.2rem;
+  }
+
+  .benefit-card-1 p {
+    font-size: 0.9rem;
+  }
+
+  .prize-stack {
+    gap: 1.5rem;
+  }
+
+  .prize-value {
+    font-size: 2.25rem;
+  }
+
+  .timeline-step-card {
+    max-width: 350px;
+  }
+
+  .faq-grid {
+    gap: 2.5rem;
+  }
+}

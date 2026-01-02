@@ -1,0 +1,6 @@
+# Robots.txt for Independent Visions Art Prize
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://your-domain.vercel.app/sitemap.xml

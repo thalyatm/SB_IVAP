@@ -152,3 +152,118 @@
     padding: 1rem;
   }
 }
+
+/* Extra-small mobile (320-359px) */
+@media (max-width: 359px) {
+  .thank-you-page {
+    padding: 1rem 0.75rem;
+    margin-top: 60px;
+  }
+
+  .thank-you-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .thank-you-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .thank-you-page h1 {
+    font-size: 1.5rem;
+  }
+
+  .thank-you-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .next-steps {
+    padding: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .next-steps h2 {
+    font-size: 1rem;
+  }
+
+  .next-steps li {
+    padding: 0.5rem 0;
+    padding-left: 2rem;
+  }
+
+  .next-steps li::before {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.75rem;
+  }
+
+  .next-steps li strong {
+    font-size: 0.85rem;
+  }
+
+  .next-steps li span {
+    font-size: 0.8rem;
+  }
+
+  .thank-you-details {
+    padding: 0.75rem;
+  }
+
+  .thank-you-details p {
+    font-size: 0.8rem;
+  }
+
+  .back-link {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Common iPhone sizes (390-430px) */
+@media (min-width: 390px) and (max-width: 430px) {
+  .thank-you-container {
+    padding: 2rem 1.25rem;
+  }
+
+  .thank-you-icon {
+    width: 65px;
+    height: 65px;
+  }
+
+  .thank-you-page h1 {
+    font-size: 1.75rem;
+  }
+}
+
+/* Large desktop (1280px+) */
+@media (min-width: 1280px) {
+  .thank-you-container {
+    max-width: 700px;
+    padding: 3.5rem;
+  }
+
+  .thank-you-icon {
+    width: 90px;
+    height: 90px;
+    font-size: 3rem;
+  }
+
+  .thank-you-page h1 {
+    font-size: 2.75rem;
+  }
+
+  .thank-you-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .next-steps {
+    padding: 2rem;
+  }
+
+  .next-steps h2 {
+    font-size: 1.5rem;
+  }
+}

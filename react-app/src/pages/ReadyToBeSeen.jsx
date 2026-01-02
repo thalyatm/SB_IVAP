@@ -1,20 +1,49 @@
-import { useState } from 'react';
-import CheckoutModal from '../components/CheckoutModal';
+import { useState, useCallback, lazy, Suspense } from 'react';
 import './ReadyToBeSeen.css';
+
+// Lazy load CheckoutModal - defers Stripe SDK until checkout opens
+const CheckoutModal = lazy(() => import('../components/CheckoutModal'));
+
+// Loading skeleton for checkout modal
+function CheckoutLoader() {
+  return (
+    <div className="checkout-modal-overlay">
+      <div className="checkout-modal" style={{ minHeight: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{
+          width: '40px',
+          height: '40px',
+          border: '3px solid #E8E0D5',
+          borderTopColor: '#25102E',
+          borderRadius: '50%',
+          animation: 'spin 0.8s linear infinite'
+        }} />
+      </div>
+    </div>
+  );
+}
 
 function ReadyToBeSeen() {
   const [openFaq, setOpenFaq] = useState(null);
   const [showMorePrizes, setShowMorePrizes] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
 
-  const toggleFaq = (index) => {
-    setOpenFaq(openFaq === index ? null : index);
-  };
+  // Memoized callbacks to prevent unnecessary re-renders
+  const toggleFaq = useCallback((index) => {
+    setOpenFaq(prev => prev === index ? null : index);
+  }, []);
 
-  const openCheckout = (e) => {
+  const toggleMorePrizes = useCallback(() => {
+    setShowMorePrizes(prev => !prev);
+  }, []);
+
+  const openCheckout = useCallback((e) => {
     e.preventDefault();
     setIsCheckoutOpen(true);
-  };
+  }, []);
+
+  const closeCheckout = useCallback(() => {
+    setIsCheckoutOpen(false);
+  }, []);
 
   return (
     <div className="page-1">
@@ -34,7 +63,15 @@ function ReadyToBeSeen() {
       {/* Hero Section */}
       <section className="hero-1">
         <div className="hero-image-1">
-          <img src="/images/Winners.jpg" alt="Previous art prize winners celebrating" />
+          {/* Explicit dimensions prevent CLS, fetchpriority for LCP */}
+          <img
+            src="/images/Winners.jpg"
+            alt="Previous art prize winners celebrating"
+            width={600}
+            height={400}
+            fetchpriority="high"
+            decoding="async"
+          />
         </div>
         <div className="hero-content-1">
           <p className="eyebrow-1">Independent Visions Art Prize</p>
@@ -61,7 +98,6 @@ function ReadyToBeSeen() {
               Submit Your Entry — $50
             </button>
             <p className="entry-note">$50 entry fee · Submit up to 6 artworks · <span className="deadline-text">Entries close January 9, 2026</span></p>
-            <p className="save-progress-note">Save your progress and return to complete your submission anytime before the deadline.</p>
           </div>
         </div>
       </section>
@@ -100,7 +136,7 @@ function ReadyToBeSeen() {
               <div className="prize-label">First Prize</div>
               <div className="prize-value"><span className="valued-at">Valued at</span> $3,449</div>
               <ul className="prize-includes">
-                <li>One week solo exhibition at the Studio on Brunswick <a href="#venue" className="prize-link">Pop Up Gallery</a> <span className="item-value">valued at $1,050</span></li>
+                <li>One week solo exhibition at the <a href="#venue" className="prize-link">Studio on Brunswick – Pop Up Gallery</a> <span className="item-value">valued at $1,050</span></li>
                 <li>Six 1:1 coaching/mentoring sessions <span className="item-value">valued at $1,350</span></li>
                 <li>12-month Inner Circle membership <span className="item-value">valued at $300</span></li>
                 <li>Exhibition Readiness Pack <span className="item-value">valued at $149</span></li>
@@ -132,7 +168,7 @@ function ReadyToBeSeen() {
             <div className={`more-prizes-section ${showMorePrizes ? 'open' : ''}`}>
               <button
                 className="more-prizes-toggle"
-                onClick={() => setShowMorePrizes(!showMorePrizes)}
+                onClick={toggleMorePrizes}
               >
                 {showMorePrizes ? 'Hide' : 'Show'} 5 More Awards
                 <span className="toggle-icon"></span>
@@ -203,6 +239,7 @@ function ReadyToBeSeen() {
               <div className="step-number">3</div>
               <h3>Upload Your Work</h3>
               <p>Submit up to <strong>6 pieces</strong> before January 9. Successful applicants notified the following Friday.</p>
+              <p className="step-note">Save your progress and return to complete your submission anytime before the deadline.</p>
             </div>
           </div>
 
@@ -249,8 +286,8 @@ function ReadyToBeSeen() {
         <div className="gallery-container">
           <div className="gallery-content">
             <p className="gallery-eyebrow">The Venue</p>
-            <h2>Studio on Brunswick Pop Up Gallery</h2>
-            <p className="gallery-location">California Lane, 2/22 McLachlan Street<br/>Fortitude Valley, Brisbane</p>
+            <h2>Studio on Brunswick – Pop Up Gallery</h2>
+            <p className="gallery-location">California Lane, 2/22 McLachlan Street, Fortitude Valley QLD</p>
             <p className="gallery-description">
               Sitting beautifully at the top end of California Lane, near Reverends Cafe, Pressi Juice Bar, and a myriad of boutique bars and shops - the perfect space for your exhibition.
             </p>
@@ -258,7 +295,7 @@ function ReadyToBeSeen() {
               <strong>Capacity:</strong> 20-30 people + laneway spill-out (24m²)
             </p>
             <div className="gallery-facilities">
-              <h4>Facilities</h4>
+              <h3 className="facilities-heading">Facilities</h3>
               <ul className="facilities-list">
                 <li>Track hanging system</li>
                 <li>Wifi & air conditioning</li>
@@ -270,7 +307,15 @@ function ReadyToBeSeen() {
             </div>
           </div>
           <div className="gallery-image">
-            <img src="/images/Gallery.webp" alt="Studio on Brunswick gallery interior" />
+            {/* Explicit dimensions prevent CLS, lazy loaded for below-fold */}
+            <img
+              src="/images/Gallery.webp"
+              alt="Studio on Brunswick gallery interior"
+              width={450}
+              height={300}
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </div>
       </section>
@@ -281,33 +326,33 @@ function ReadyToBeSeen() {
           <h2 className="section-title-1">Frequently Asked Questions</h2>
 
           <div className="faq-grid">
-            <div className={`faq-item ${openFaq === 0 ? 'open' : ''}`} onClick={() => toggleFaq(0)}>
-              <h3>Can I enter from interstate? <span className="faq-icon"></span></h3>
-              <p>Yes! The prize is open to Australian artists nationwide. You'll need to arrange shipping for your work if selected for exhibition.</p>
+            <div className={`faq-item ${openFaq === 0 ? 'open' : ''}`} onClick={() => toggleFaq(0)} onKeyDown={(e) => e.key === 'Enter' && toggleFaq(0)} role="button" tabIndex={0} aria-expanded={openFaq === 0}>
+              <h3>Can I enter from interstate? <span className="faq-icon" aria-hidden="true"></span></h3>
+              <p>Absolutely! We welcome entries from artists all across Australia. If your work is selected for the exhibition, you'll just need to arrange shipping to our Brisbane gallery.</p>
             </div>
 
-            <div className={`faq-item ${openFaq === 1 ? 'open' : ''}`} onClick={() => toggleFaq(1)}>
-              <h3>Can I enter multiple times? <span className="faq-icon"></span></h3>
+            <div className={`faq-item ${openFaq === 1 ? 'open' : ''}`} onClick={() => toggleFaq(1)} onKeyDown={(e) => e.key === 'Enter' && toggleFaq(1)} role="button" tabIndex={0} aria-expanded={openFaq === 1}>
+              <h3>Can I enter multiple times? <span className="faq-icon" aria-hidden="true"></span></h3>
               <p>Yes. Each $50 entry allows you to submit up to 6 artworks. You may purchase multiple entries if you have more work to submit.</p>
             </div>
 
-            <div className={`faq-item ${openFaq === 2 ? 'open' : ''}`} onClick={() => toggleFaq(2)}>
-              <h3>What if I'm not ready to upload yet? <span className="faq-icon"></span></h3>
+            <div className={`faq-item ${openFaq === 2 ? 'open' : ''}`} onClick={() => toggleFaq(2)} onKeyDown={(e) => e.key === 'Enter' && toggleFaq(2)} role="button" tabIndex={0} aria-expanded={openFaq === 2}>
+              <h3>What if I'm not ready to upload yet? <span className="faq-icon" aria-hidden="true"></span></h3>
               <p>No problem. Once you purchase your entry, you'll have until January 9 to upload your work via your private submission link.</p>
             </div>
 
-            <div className={`faq-item ${openFaq === 3 ? 'open' : ''}`} onClick={() => toggleFaq(3)}>
-              <h3>When will I know if I'm selected? <span className="faq-icon"></span></h3>
+            <div className={`faq-item ${openFaq === 3 ? 'open' : ''}`} onClick={() => toggleFaq(3)} onKeyDown={(e) => e.key === 'Enter' && toggleFaq(3)} role="button" tabIndex={0} aria-expanded={openFaq === 3}>
+              <h3>When will I know if I'm selected? <span className="faq-icon" aria-hidden="true"></span></h3>
               <p>Successful applicants will be notified the Friday following the January 9 deadline.</p>
             </div>
 
-            <div className={`faq-item ${openFaq === 4 ? 'open' : ''}`} onClick={() => toggleFaq(4)}>
-              <h3>What mediums are accepted? <span className="faq-icon"></span></h3>
+            <div className={`faq-item ${openFaq === 4 ? 'open' : ''}`} onClick={() => toggleFaq(4)} onKeyDown={(e) => e.key === 'Enter' && toggleFaq(4)} role="button" tabIndex={0} aria-expanded={openFaq === 4}>
+              <h3>What mediums are accepted? <span className="faq-icon" aria-hidden="true"></span></h3>
               <p>All mediums are welcome: painting, sculpture, photography, mixed media, digital (printed), textiles, and more.</p>
             </div>
 
-            <div className={`faq-item ${openFaq === 5 ? 'open' : ''}`} onClick={() => toggleFaq(5)}>
-              <h3>Does my work need to be framed? <span className="faq-icon"></span></h3>
+            <div className={`faq-item ${openFaq === 5 ? 'open' : ''}`} onClick={() => toggleFaq(5)} onKeyDown={(e) => e.key === 'Enter' && toggleFaq(5)} role="button" tabIndex={0} aria-expanded={openFaq === 5}>
+              <h3>Does my work need to be framed? <span className="faq-icon" aria-hidden="true"></span></h3>
               <p>Work must be ready for gallery display. This typically means framed or professionally mounted, but depends on the medium.</p>
             </div>
           </div>
@@ -341,6 +386,7 @@ function ReadyToBeSeen() {
             </button>
 
             <p className="cta-reassurance">Secure checkout • Instant confirmation • Upload anytime before deadline</p>
+            <p className="terms-disclaimer">By entering, you agree to the full terms and conditions of the Independent Visions Art Prize.</p>
           </div>
         </div>
       </section>
@@ -349,16 +395,21 @@ function ReadyToBeSeen() {
       <footer className="footer-1">
         <p className="footer-logo-1">Studio on Brunswick</p>
         <p className="footer-address-1">
-          Gallery: California Lane, 2/22 McLachlan Street<br/>
-          Fortitude Valley, Brisbane QLD 4006<br/>
+          Studio on Brunswick – Pop Up Gallery<br/>
+          California Lane, 2/22 McLachlan Street, Fortitude Valley QLD<br/>
           adminsb@studioonbrunswick.com
         </p>
       </footer>
 
-      <CheckoutModal
-        isOpen={isCheckoutOpen}
-        onClose={() => setIsCheckoutOpen(false)}
-      />
+      {/* Lazy-loaded checkout modal - Stripe SDK only loads when opened */}
+      {isCheckoutOpen && (
+        <Suspense fallback={<CheckoutLoader />}>
+          <CheckoutModal
+            isOpen={isCheckoutOpen}
+            onClose={closeCheckout}
+          />
+        </Suspense>
+      )}
     </div>
   );
 }

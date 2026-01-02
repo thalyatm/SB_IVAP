@@ -4,6 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S2HEC4GM51"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S2HEC4GM51');
+    </script>
+    <!-- End Google tag -->
+
     <!-- Primary Meta Tags -->
     <title>Studio on Brunswick | Independent Visions Art Prize</title>
     <meta name="description" content="Studio on Brunswick presents the Independent Visions Art Prize - a career-building opportunity for emerging Australian artists with exhibition, mentoring, and community.">
@@ -11,12 +21,26 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Studio on Brunswick">
+    <meta property="og:title" content="Independent Visions Art Prize | Studio on Brunswick">
+    <meta property="og:description" content="Enter for the chance to win prizes, exhibition space, and career-building mentorship. Open to emerging and independent artists Australia-wide.">
+    <meta property="og:image" content="/images/Winners.jpg">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Independent Visions Art Prize | Studio on Brunswick">
+    <meta name="twitter:description" content="Enter for the chance to win prizes, exhibition space, and career-building mentorship.">
+    <meta name="twitter:image" content="/images/Winners.jpg">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Canonical URL - TODO: Update with production domain -->
+    <link rel="canonical" href="https://your-domain.vercel.app/" />
+
+    <!-- Preload LCP image for faster rendering -->
+    <link rel="preload" as="image" href="/images/Winners.jpg" fetchpriority="high">
 
     <!-- Preconnect to font origin for faster loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,13 +72,21 @@
     fbq('init', '1361351318964087');
     fbq('track', 'PageView');
     </script>
-    <noscript>
-    <img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1361351318964087&ev=PageView&noscript=1"/>
-    </noscript>
     <!-- End Facebook Pixel Code -->
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "uv0qg5wwd9");
+    </script>
+    <!-- End Microsoft Clarity -->
   </head>
   <body>
+    <!-- Facebook Pixel noscript fallback -->
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1361351318964087&ev=PageView&noscript=1" alt=""/></noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

@@ -1,3 +1,4 @@
+/* global fbq */
 import { useCallback, useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import {
@@ -45,14 +46,14 @@ function CheckoutModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="checkout-modal-overlay" onClick={onClose}>
+    <div className="checkout-modal-overlay" onClick={onClose} role="dialog" aria-modal="true" aria-labelledby="checkout-modal-title">
       <div className="checkout-modal" onClick={(e) => e.stopPropagation()}>
-        <button className="checkout-modal-close" onClick={onClose}>
+        <button className="checkout-modal-close" onClick={onClose} aria-label="Close checkout">
           &times;
         </button>
 
         <div className="checkout-modal-header">
-          <h2>Complete Your Entry</h2>
+          <h2 id="checkout-modal-title">Complete Your Entry</h2>
           <p>Independent Visions Art Prize - $50 AUD</p>
         </div>
 

@@ -1,3 +1,4 @@
+/* global fbq */
 import { useEffect } from 'react';
 import './ThankYou.css';
 
@@ -43,7 +44,7 @@ function ThankYou() {
 
         <div className="thank-you-details">
           <p><strong>Exhibition Dates:</strong> 4–22 February 2026</p>
-          <p><strong>Location:</strong> Studio on Brunswick Pop Up Gallery, Fortitude Valley</p>
+          <p><strong>Location:</strong> Studio on Brunswick – Pop Up Gallery, California Lane, 2/22 McLachlan Street, Fortitude Valley QLD</p>
         </div>
 
         <a href="https://studioonbrunswick.com.au" className="back-link">

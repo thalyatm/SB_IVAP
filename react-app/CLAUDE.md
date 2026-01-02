@@ -151,12 +151,33 @@ React landing pages for Studio on Brunswick's Independent Visions Art Prize.
 - Headlines: `clamp(2rem, 5.5vw, 3.25rem)`
 - Prize values: `1.35rem` to `1.75rem`
 
-### Mobile Breakpoints
-- Large tablets: `900px`
-- Tablets: `768px`
-- Small tablets/large phones: `700px`
-- Small phones: `500px`
-- Extra small: `480px`
+### Responsive Breakpoints
+Tested and optimized for widths: 320, 360, 390, 412, 430, 768, 820, 1024, 1280, 1440px
+
+**Mobile (small to large):**
+- Extra-small mobile: `max-width: 359px` (320px devices)
+- Small mobile: `max-width: 480px` (360-480px devices)
+- iPhone sizes: `390px-430px` (iPhone 12-15 range)
+- Large phones: `max-width: 500px`
+
+**Tablet:**
+- Small tablets: `max-width: 700px`
+- Tablet portrait: `max-width: 768px`
+- Tablet landscape/transition: `769px-850px` (820px devices)
+- Large tablet: `851px-900px`
+
+**Desktop:**
+- Small desktop: `min-width: 1024px`
+- Large desktop: `min-width: 1280px`
+- Extra large: `min-width: 1440px` (max-width: 1600px for content)
+
+**Key responsive behaviors:**
+- Hero: 2-column → 1-column at 900px (and at 769-850px for 820px tablets)
+- Benefit grid: 4-column → 2-column at 900px
+- Prize stack: 3-column → 1-column at 900px
+- Timeline: horizontal → vertical at 768px
+- FAQ/Specs: 2-column → 1-column at 700px
+- Content max-width capped at 1600px on large screens
 
 ### Accordion/Expandable Elements
 - Default state: content hidden with `max-height: 0; overflow: hidden`
@@ -187,3 +208,78 @@ React landing pages for Studio on Brunswick's Independent Visions Art Prize.
 8. Sharp corners on buttons (no border-radius)
 9. Consistent hover states with translateY and shadow changes
 10. Alternating section backgrounds for visual rhythm
+
+## Performance Optimizations
+
+### Code Splitting
+- **ThankYou page**: Lazy loaded with `React.lazy()` - only fetched after checkout
+- **CheckoutModal + Stripe SDK**: Lazy loaded - deferred until user clicks checkout button
+- **Result**: Initial bundle reduced from 271KB to 256KB (15KB saved on first load)
+
+### Bundle Analysis (Production Build)
+```
+Main bundle:      255.97 kB (gzip: 79.91 kB) - loads immediately
+CheckoutModal:     16.67 kB (gzip: 6.02 kB) - loads on checkout click
+ThankYou:           1.64 kB (gzip: 0.76 kB) - loads on thank-you route
+```
+
+### Re-render Prevention
+- `Header`: Wrapped in `React.memo()` to prevent re-renders from parent state
+- `ReadyToBeSeen`: All callbacks wrapped in `useCallback()`:
+  - `toggleFaq`, `toggleMorePrizes`, `openCheckout`, `closeCheckout`
+- Event handlers use functional updates (`prev => !prev`) for stable references
+
+### Image Optimization
+- **Hero image (`Winners.jpg`)**:
+  - `fetchpriority="high"` for LCP optimization
+  - `width={600} height={400}` for intrinsic sizing
+  - `aspect-ratio: 3/2` CSS for CLS prevention
+  - `decoding="async"` for non-blocking decode
+- **Gallery image (`Gallery.webp`)**:
+  - `loading="lazy"` for below-fold deferred loading
+  - `width={450} height={300}` for intrinsic sizing
+  - `aspect-ratio: 3/2` CSS for CLS prevention
+- **Header logo**:
+  - `fetchpriority="high"` (above fold)
+  - `width={160} height={40}` explicit dimensions
+  - `aspect-ratio: 4/1` CSS for CLS prevention
+
+### CLS Prevention
+- All images have explicit `width` and `height` attributes
+- CSS `aspect-ratio` property reserves space before image loads
+- FAQ accordion uses `max-height` animation (no layout shift)
+- More Prizes toggle uses `max-height` animation
+
+### How to Measure Performance
+
+**Bundle Size:**
+```bash
+npm run build
+# Check output for chunk sizes
+```
+
+**Lighthouse:**
+```bash
+# Build and preview production
+npm run build && npm run preview
+# Open Chrome DevTools > Lighthouse > Run audit
+# Target scores: Performance 90+, Best Practices 100
+```
+
+**Runtime Performance:**
+```bash
+# In Chrome DevTools:
+# 1. Performance tab > Record page load
+# 2. Check for:
+#    - LCP < 2.5s
+#    - CLS < 0.1
+#    - FID < 100ms
+```
+
+**React DevTools Profiler:**
+```
+# Install React DevTools browser extension
+# 1. Open Profiler tab
+# 2. Record interactions (FAQ clicks, checkout open)
+# 3. Check for unnecessary re-renders (gray components = memoized)
+```
