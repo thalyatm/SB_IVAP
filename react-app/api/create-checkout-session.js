@@ -26,6 +26,9 @@ export default async function handler(req, res) {
       ],
       mode: 'payment',
       return_url: `${req.headers.origin}/thank-you?session_id={CHECKOUT_SESSION_ID}`,
+      // Collect customer details
+      customer_creation: 'always',
+      billing_address_collection: 'required',
     });
 
     res.status(200).json({ clientSecret: session.client_secret });
