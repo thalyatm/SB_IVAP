@@ -369,6 +369,36 @@ function ReadyToBeSeen() {
           <h2>Ready to take the next step?</h2>
           <p>Enter for your chance to exhibit, win mentoring, and join a community that supports independent artists.</p>
 
+          {/* What Happens Next - 4-step journey */}
+          <div className="what-happens-next">
+            <h3 className="what-happens-title">What Happens Next</h3>
+            <div className="journey-steps">
+              <div className="journey-step">
+                <span className="journey-number">1</span>
+                <span className="journey-label">Instant Confirmation</span>
+                <span className="journey-desc">Payment receipt + welcome email</span>
+              </div>
+              <div className="journey-connector"></div>
+              <div className="journey-step">
+                <span className="journey-number">2</span>
+                <span className="journey-label">Private Link Sent</span>
+                <span className="journey-desc">Secure submission form access</span>
+              </div>
+              <div className="journey-connector"></div>
+              <div className="journey-step">
+                <span className="journey-number">3</span>
+                <span className="journey-label">Upload by Jan 9</span>
+                <span className="journey-desc">Submit up to 6 artworks</span>
+              </div>
+              <div className="journey-connector"></div>
+              <div className="journey-step">
+                <span className="journey-number">4</span>
+                <span className="journey-label">Results Announced</span>
+                <span className="journey-desc">Notified the following Friday</span>
+              </div>
+            </div>
+          </div>
+
           <div className="final-cta-box">
             <div className="cta-details">
               <div className="cta-detail">
