@@ -1,34 +1,27 @@
 import Stripe from 'stripe';
 import { Resend } from 'resend';
+import { buffer } from 'micro';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const config = {
   api: {
-    bodyParser: false, // Stripe requires raw body for webhook verification
+    bodyParser: false,
   },
 };
-
-async function buffer(readable) {
-  const chunks = [];
-  for await (const chunk of readable) {
-    chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
-  }
-  return Buffer.concat(chunks);
-}
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const buf = await buffer(req);
-  const sig = req.headers['stripe-signature'];
-
   let event;
 
   try {
+    const buf = await buffer(req);
+    const sig = req.headers['stripe-signature'];
+
     event = stripe.webhooks.constructEvent(
       buf,
       sig,
@@ -46,17 +39,20 @@ export default async function handler(req, res) {
     const customerEmail = session.customer_details?.email;
     const customerName = session.customer_details?.name?.split(' ')[0] || 'Artist';
 
+    console.log('Processing checkout for:', customerEmail);
+
     if (customerEmail) {
       try {
-        await resend.emails.send({
+        const emailResult = await resend.emails.send({
           from: 'Studio on Brunswick <adminsb@studioonbrunswick.com>',
           to: customerEmail,
           subject: 'Welcome to the Independent Visions Art Prize!',
           html: getEmailHtml(customerName),
         });
-        console.log('Email sent successfully to:', customerEmail);
+        console.log('Email sent successfully:', emailResult);
       } catch (error) {
         console.error('Failed to send email:', error);
+        // Don't return error - we still want to acknowledge the webhook
       }
     }
   }
