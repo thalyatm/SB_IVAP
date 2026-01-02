@@ -158,6 +158,7 @@
 
 @media (max-width: 768px) {
   .header {
+    position: relative; /* Not fixed on mobile - flows naturally */
     justify-content: center;
     flex-wrap: wrap;
   }
