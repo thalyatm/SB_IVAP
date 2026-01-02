@@ -60,7 +60,7 @@ function ReadyToBeSeen() {
             <button className="cta-primary-1" onClick={openCheckout}>
               Submit Your Entry — $50
             </button>
-            <p className="entry-note">$50 entry fee · Submit up to 6 artworks · <span className="deadline-text">Entries close Jan 9</span></p>
+            <p className="entry-note">$50 entry fee · Submit up to 6 artworks · <span className="deadline-text">Entries close January 9, 2026</span></p>
           </div>
         </div>
       </section>
@@ -82,7 +82,7 @@ function ReadyToBeSeen() {
           </div>
           <div className="trust-item">
             <span className="trust-icon icon-clock"></span>
-            <span>Entries Close Jan 9</span>
+            <span>Entries Close January 9, 2026</span>
           </div>
         </div>
       </section>
@@ -330,7 +330,7 @@ function ReadyToBeSeen() {
               </div>
               <div className="cta-detail">
                 <span className="label">Deadline</span>
-                <span className="value">Jan 9, 2026</span>
+                <span className="value">January 9, 2026</span>
               </div>
             </div>
 
