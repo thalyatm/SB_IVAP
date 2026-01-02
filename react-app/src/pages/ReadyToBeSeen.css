@@ -364,6 +364,11 @@
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
+  background: var(--urgency-red);
+  color: #FFFFFF;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-weight: 700;
   animation: urgencyPulse 2s ease-in-out infinite;
 }
 
@@ -379,13 +384,15 @@
 }
 
 .trust-item-countdown {
-  background: rgba(196, 69, 54, 0.1);
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  background: transparent;
+  padding: 0;
 }
 
 .cta-detail-countdown .countdown-value {
-  color: var(--urgency-red);
+  background: var(--urgency-red);
+  color: #FFFFFF;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
   font-weight: 700;
 }
 
