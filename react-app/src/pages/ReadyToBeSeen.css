@@ -285,6 +285,13 @@
   font-weight: 600;
 }
 
+.save-progress-note {
+  font-size: 0.7rem;
+  color: var(--warm-gray);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
 .cta-primary-1 {
   display: inline-block;
   background-color: var(--brand-purple);

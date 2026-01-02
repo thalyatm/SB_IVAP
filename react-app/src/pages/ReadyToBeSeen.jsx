@@ -61,6 +61,7 @@ function ReadyToBeSeen() {
               Submit Your Entry — $50
             </button>
             <p className="entry-note">$50 entry fee · Submit up to 6 artworks · <span className="deadline-text">Entries close January 9, 2026</span></p>
+            <p className="save-progress-note">Save your progress and return to complete your submission anytime before the deadline.</p>
           </div>
         </div>
       </section>
