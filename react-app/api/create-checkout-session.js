@@ -29,6 +29,8 @@ export default async function handler(req, res) {
       // Collect customer details
       customer_creation: 'always',
       billing_address_collection: 'required',
+      // Allow promo codes
+      allow_promotion_codes: true,
     });
 
     res.status(200).json({ clientSecret: session.client_secret });
