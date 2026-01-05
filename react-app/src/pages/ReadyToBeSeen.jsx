@@ -184,7 +184,6 @@ function ReadyToBeSeen() {
           </div>
 
           <div className="hero-trust-row">
-            <span className="trust-badge"><span className="badge-icon">⚖️</span> Judge: Kate Marek</span>
             <span className="trust-badge"><span className="badge-icon">🔒</span> Secure Checkout</span>
             <span className="trust-badge"><span className="badge-icon">🇦🇺</span> Australian</span>
           </div>
@@ -228,7 +227,7 @@ function ReadyToBeSeen() {
                   <h3 className="prize-name">First Prize</h3>
                   <p className="prize-summary">Solo Exhibition + Full Mentorship Package</p>
                 </div>
-                <div className="prize-value-badge">$3,449</div>
+                <div className="prize-value-badge">valued at $3,449</div>
               </div>
               <button className="prize-expand-btn" onClick={() => togglePrize('first')} aria-expanded={expandedPrize === 'first'}>
                 {expandedPrize === 'first' ? 'Hide details' : 'See what\'s included'}
@@ -253,7 +252,7 @@ function ReadyToBeSeen() {
                   <h3 className="prize-name">Second Prize</h3>
                   <p className="prize-summary">Group Show + Mentorship Package</p>
                 </div>
-                <div className="prize-value-badge">$2,100</div>
+                <div className="prize-value-badge">valued at $2,100</div>
               </div>
               <button className="prize-expand-btn" onClick={() => togglePrize('second')} aria-expanded={expandedPrize === 'second'}>
                 {expandedPrize === 'second' ? 'Hide details' : 'See what\'s included'}
@@ -277,7 +276,7 @@ function ReadyToBeSeen() {
                   <h3 className="prize-name">Artist Accelerator Award</h3>
                   <p className="prize-summary">Intensive Mentorship + Brand Audit</p>
                 </div>
-                <div className="prize-value-badge">$2,250</div>
+                <div className="prize-value-badge">valued at $2,250</div>
               </div>
               <button className="prize-expand-btn" onClick={() => togglePrize('accelerator')} aria-expanded={expandedPrize === 'accelerator'}>
                 {expandedPrize === 'accelerator' ? 'Hide details' : 'See what\'s included'}
@@ -304,35 +303,35 @@ function ReadyToBeSeen() {
                   <div className="prize-card-compact">
                     <div className="compact-header">
                       <h4>Emerging Artist Award</h4>
-                      <span className="compact-value">$975</span>
+                      <span className="compact-value">valued at $975</span>
                     </div>
                     <p>3 coaching sessions + 12-month membership</p>
                   </div>
                   <div className="prize-card-compact">
                     <div className="compact-header">
                       <h4>Winner's Choice Award</h4>
-                      <span className="compact-value">$825</span>
+                      <span className="compact-value">valued at $825</span>
                     </div>
                     <p>3 coaching sessions + 6-month membership</p>
                   </div>
                   <div className="prize-card-compact">
                     <div className="compact-header">
                       <h4>People's Choice Award</h4>
-                      <span className="compact-value">$325</span>
+                      <span className="compact-value">valued at $325</span>
                     </div>
                     <p>$100 Art Shed voucher + 1 coaching session</p>
                   </div>
                   <div className="prize-card-compact">
                     <div className="compact-header">
                       <h4>Affiliates Choice Award</h4>
-                      <span className="compact-value">$1,075</span>
+                      <span className="compact-value">valued at $1,075</span>
                     </div>
                     <p>Affiliate mentorship package</p>
                   </div>
                   <div className="prize-card-compact">
                     <div className="compact-header">
                       <h4>Highly Commended</h4>
-                      <span className="compact-value">$400</span>
+                      <span className="compact-value">valued at $400</span>
                     </div>
                     <p>Affiliate recognition package</p>
                   </div>
