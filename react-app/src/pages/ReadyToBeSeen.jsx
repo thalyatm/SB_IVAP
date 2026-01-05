@@ -263,7 +263,7 @@ function ReadyToBeSeen() {
                   <li><span className="detail-icon">🎨</span> Place in a 2026 group show</li>
                   <li><span className="detail-icon">👤</span> Four 1:1 coaching/mentoring sessions</li>
                   <li><span className="detail-icon">🎓</span> 6-month Inner Circle membership</li>
-                  <li><span className="detail-icon">🚀</span> 6-month group mentoring program</li>
+                  <li><span className="detail-icon">🚀</span> 6-month group mentoring programme</li>
                 </ul>
               </div>
             </div>
@@ -286,7 +286,7 @@ function ReadyToBeSeen() {
                 <ul>
                   <li><span className="detail-icon">👤</span> Six 1:1 coaching/mentoring sessions</li>
                   <li><span className="detail-icon">📱</span> Social media audit</li>
-                  <li><span className="detail-icon">🚀</span> 6-month group mentoring program</li>
+                  <li><span className="detail-icon">🚀</span> 6-month group mentoring programme</li>
                 </ul>
               </div>
             </div>
@@ -539,12 +539,12 @@ function ReadyToBeSeen() {
 
             <div className={`faq-item ${openFaq === 8 ? 'open' : ''}`} onClick={() => toggleFaq(8)} onKeyDown={(e) => e.key === 'Enter' && toggleFaq(8)} role="button" tabIndex={0} aria-expanded={openFaq === 8}>
               <h3>What's your refund policy? <span className="faq-icon" aria-hidden="true"></span></h3>
-              <p>While we can't offer cash refunds, entry fees can be converted to credit toward Studio on Brunswick's professional development services—including mentoring sessions, workshops, and membership programs. Contact adminsb@studioonbrunswick.com to discuss options.</p>
+              <p>While we can't offer cash refunds, all non-winning entrants automatically receive their full $50 entry fee as credit toward Studio on Brunswick's professional development services—including coaching sessions, workshops, and memberships. If you need to withdraw before judging, contact adminsb@studioonbrunswick.com to discuss options.</p>
             </div>
 
             <div className={`faq-item ${openFaq === 9 ? 'open' : ''}`} onClick={() => toggleFaq(9)} onKeyDown={(e) => e.key === 'Enter' && toggleFaq(9)} role="button" tabIndex={0} aria-expanded={openFaq === 9}>
               <h3>What if my work isn't selected? <span className="faq-icon" aria-hidden="true"></span></h3>
-              <p>Every entrant receives personalized feedback from our judging panel. You'll also get priority notification for future exhibitions and events at Studio on Brunswick. Your entry fee directly supports the Brisbane arts community.</p>
+              <p>If your work isn't selected as a winner, you'll receive your full ticket value ($50) as credit to spend on professional development with Studio on Brunswick—including coaching sessions, workshops, and memberships. You'll also get personalised feedback from our judging panel and priority notification for future exhibitions and events.</p>
             </div>
           </div>
         </div>

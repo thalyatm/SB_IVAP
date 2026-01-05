@@ -3769,7 +3769,7 @@
   .sticky-cta-mobile {
     display: flex;
     position: fixed;
-    bottom: 0;
+    top: 0;
     left: 0;
     right: 0;
     background: #FFFFFF;
@@ -3777,9 +3777,9 @@
     justify-content: space-between;
     align-items: center;
     z-index: 999;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.12);
-    border-top: 1px solid var(--soft-taupe);
-    transform: translateY(100%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    border-bottom: 1px solid var(--soft-taupe);
+    transform: translateY(-100%);
     transition: transform 0.3s ease;
   }
 
@@ -3799,7 +3799,7 @@
   }
 
   .sticky-cta-button {
-    background: var(--brand-gold);
+    background: var(--urgency-red);
     color: #fff;
     border: none;
     padding: 0.6rem 1.25rem;
@@ -3811,13 +3811,8 @@
   }
 
   .sticky-cta-button:hover {
-    background: var(--brand-gold-dark);
+    background: #a83a2b;
     transform: translateY(-1px);
-  }
-
-  /* Add bottom padding to footer to prevent sticky bar overlap */
-  .footer-1 {
-    padding-bottom: 5rem;
   }
 }
 
@@ -3900,14 +3895,28 @@
 
 @media (max-width: 480px) {
   .testimonials-section {
-    padding: 3rem 1rem;
+    padding: 2rem 1rem;
   }
-  
+
+  .testimonials-grid {
+    gap: 0.75rem;
+  }
+
   .testimonial-card {
-    padding: 1.5rem;
+    padding: 1rem;
   }
-  
+
   .testimonial-quote {
     font-size: 1.05rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .testimonials-section .section-title-1 {
+    margin-bottom: 0.25rem;
+  }
+
+  .testimonials-section .section-subtitle {
+    margin-bottom: 1rem;
   }
 }
