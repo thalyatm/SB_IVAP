@@ -57,6 +57,33 @@ function CheckoutModal({ isOpen, onClose }) {
           <p>Independent Visions Art Prize - $50 AUD</p>
         </div>
 
+        {/* Value reminder - what you're getting */}
+        <div className="checkout-value-reminder">
+          <ul className="value-list">
+            <li><span className="check-icon">✓</span> Submit up to 6 artworks for $11k+ prize pool</li>
+            <li><span className="check-icon">✓</span> Chance to win solo exhibition + mentoring</li>
+            <li><span className="check-icon">✓</span> Private submission link sent instantly</li>
+          </ul>
+        </div>
+
+        {/* What happens next mini-timeline */}
+        <div className="checkout-timeline">
+          <div className="timeline-step">
+            <span className="step-num">1</span>
+            <span className="step-text">Pay</span>
+          </div>
+          <span className="timeline-arrow">→</span>
+          <div className="timeline-step">
+            <span className="step-num">2</span>
+            <span className="step-text">Get link</span>
+          </div>
+          <span className="timeline-arrow">→</span>
+          <div className="timeline-step">
+            <span className="step-num">3</span>
+            <span className="step-text">Upload by Jan 9</span>
+          </div>
+        </div>
+
         <div className="checkout-modal-content">
           {error ? (
             <div className="checkout-error">
@@ -71,6 +98,16 @@ function CheckoutModal({ isOpen, onClose }) {
               <EmbeddedCheckout />
             </EmbeddedCheckoutProvider>
           )}
+        </div>
+
+        {/* Trust signals and support */}
+        <div className="checkout-trust-footer">
+          <div className="checkout-trust-badges">
+            <span className="checkout-badge">🔒 Secure SSL</span>
+            <span className="checkout-badge">🇦🇺 Australian Owned</span>
+          </div>
+          <p className="checkout-stripe">Payments securely processed by Stripe</p>
+          <p className="checkout-support">Questions? <a href="mailto:adminsb@studioonbrunswick.com">adminsb@studioonbrunswick.com</a></p>
         </div>
       </div>
     </div>

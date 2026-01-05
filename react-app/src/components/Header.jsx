@@ -3,12 +3,33 @@ import './Header.css';
 
 function Header() {
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleMouseEnter = useCallback((dropdown) => {
-    setOpenDropdown(dropdown);
-  }, []);
+    // Only use hover on desktop (when mobile menu is not open)
+    if (!mobileMenuOpen) {
+      setOpenDropdown(dropdown);
+    }
+  }, [mobileMenuOpen]);
 
   const closeDropdown = useCallback(() => {
+    if (!mobileMenuOpen) {
+      setOpenDropdown(null);
+    }
+  }, [mobileMenuOpen]);
+
+  const toggleDropdown = useCallback((dropdown) => {
+    // Toggle dropdown on click (for mobile)
+    setOpenDropdown(prev => prev === dropdown ? null : dropdown);
+  }, []);
+
+  const toggleMobileMenu = useCallback(() => {
+    setMobileMenuOpen(prev => !prev);
+    setOpenDropdown(null);
+  }, []);
+
+  const closeMobileMenu = useCallback(() => {
+    setMobileMenuOpen(false);
     setOpenDropdown(null);
   }, []);
 
@@ -25,12 +46,31 @@ function Header() {
           fetchpriority="high"
         />
       </a>
-      <nav className="nav">
+
+      {/* Hamburger menu button for mobile/tablet */}
+      <button
+        className={`hamburger-button ${mobileMenuOpen ? 'open' : ''}`}
+        onClick={toggleMobileMenu}
+        aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={mobileMenuOpen}
+      >
+        <span className="hamburger-line"></span>
+        <span className="hamburger-line"></span>
+        <span className="hamburger-line"></span>
+      </button>
+
+      {/* Mobile menu overlay */}
+      {mobileMenuOpen && (
+        <div className="mobile-menu-overlay" onClick={closeMobileMenu} />
+      )}
+
+      <nav className={`nav ${mobileMenuOpen ? 'nav-open' : ''}`}>
         {/* INNER CIRCLE Dropdown */}
         <div
           className="nav-item-dropdown"
           onMouseEnter={() => handleMouseEnter('inner-circle')}
           onMouseLeave={closeDropdown}
+          onClick={() => toggleDropdown('inner-circle')}
         >
           <span className="nav-link">INNER CIRCLE</span>
           {openDropdown === 'inner-circle' && (
@@ -46,6 +86,7 @@ function Header() {
           className="nav-item-dropdown"
           onMouseEnter={() => handleMouseEnter('whats-on')}
           onMouseLeave={closeDropdown}
+          onClick={() => toggleDropdown('whats-on')}
         >
           <span className="nav-link">WHAT'S ON</span>
           {openDropdown === 'whats-on' && (
@@ -62,6 +103,7 @@ function Header() {
           className="nav-item-dropdown"
           onMouseEnter={() => handleMouseEnter('team')}
           onMouseLeave={closeDropdown}
+          onClick={() => toggleDropdown('team')}
         >
           <span className="nav-link">TEAM</span>
           {openDropdown === 'team' && (
@@ -85,6 +127,7 @@ function Header() {
           className="nav-item-dropdown"
           onMouseEnter={() => handleMouseEnter('services')}
           onMouseLeave={closeDropdown}
+          onClick={() => toggleDropdown('services')}
         >
           <span className="nav-link">SERVICES</span>
           {openDropdown === 'services' && (
@@ -101,6 +144,7 @@ function Header() {
           className="nav-item-dropdown"
           onMouseEnter={() => handleMouseEnter('about')}
           onMouseLeave={closeDropdown}
+          onClick={() => toggleDropdown('about')}
         >
           <span className="nav-link">ABOUT</span>
           {openDropdown === 'about' && (

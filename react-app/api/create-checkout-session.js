@@ -29,7 +29,7 @@ export default async function handler(req, res) {
       return_url: `${req.headers.origin}/thank-you?session_id={CHECKOUT_SESSION_ID}`,
       // Collect customer details
       customer_creation: 'always',
-      billing_address_collection: 'required',
+      billing_address_collection: 'auto',
       // Allow promo codes
       allow_promotion_codes: true,
     });
