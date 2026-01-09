@@ -33,7 +33,7 @@ function ThankYou() {
             </li>
             <li>
               <strong>Upload your artwork</strong>
-              <span>Use the link to submit up to 6 artworks before January 9, 2026.</span>
+              <span>Use the link to submit up to 6 artworks before January 12, 2026.</span>
             </li>
             <li>
               <strong>Wait for results</strong>

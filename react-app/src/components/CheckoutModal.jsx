@@ -80,7 +80,7 @@ function CheckoutModal({ isOpen, onClose }) {
           <span className="timeline-arrow">→</span>
           <div className="timeline-step">
             <span className="step-num">3</span>
-            <span className="step-text">Upload by Jan 9</span>
+            <span className="step-text">Upload by Jan 12</span>
           </div>
         </div>
 

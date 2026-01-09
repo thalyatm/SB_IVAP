@@ -111,7 +111,7 @@ function getEmailHtml(firstName) {
               </td>
             </tr>
           </table>
-          <p style="font-size: 14px; color: #666666;"><em>You can return to the form and complete it over time before <strong>January 9</strong>.</em></p>
+          <p style="font-size: 14px; color: #666666;"><em>You can return to the form and complete it over time before <strong>January 12</strong>.</em></p>
           <div style="background-color: #f9f9f9; padding: 20px; border-radius: 4px; margin-top: 20px; border-left: 4px solid #333;">
             <h4 style="margin-top: 0;">📋 Artwork Requirements</h4>
             <p style="margin-bottom: 10px; font-size: 14px;">You may submit up to <strong>six works</strong>. All mediums are welcome.</p>
@@ -173,7 +173,8 @@ function getEmailHtml(firstName) {
           <hr style="border: 0; border-top: 1px solid #eeeeee; margin: 30px 0;"/>
           <h3 style="color: #111111;">Key Dates</h3>
           <ul style="padding-left: 20px;">
-            <li><strong>Entries close:</strong> January 9</li>
+            <li><strong>Entries close:</strong> January 11 (extended)</li>
+            <li><strong>Artwork upload deadline:</strong> January 12</li>
             <li><strong>Notification:</strong> Successful applicants notified the following Friday by email.</li>
             <li><strong>Exhibition:</strong> February 4 – February 22 at Studio on Brunswick.</li>
           </ul>

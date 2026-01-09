@@ -4,9 +4,9 @@ import './ReadyToBeSeen.css';
 // Lazy load CheckoutModal - defers Stripe SDK until checkout opens
 const CheckoutModal = lazy(() => import('../components/CheckoutModal'));
 
-// Deadline: 9PM AEST on January 9, 2026
-// AEST is UTC+10, so 9PM AEST = 11:00 UTC on Jan 9
-const DEADLINE = new Date('2026-01-09T21:00:00+10:00');
+// Deadline: 11:59PM AEST on January 11, 2026 (EXTENDED)
+// AEST is UTC+11 (daylight saving), so 11:59PM AEDT = 12:59 UTC on Jan 11
+const DEADLINE = new Date('2026-01-11T23:59:00+11:00');
 
 // Loading skeleton for checkout modal
 function CheckoutLoader() {
@@ -178,7 +178,7 @@ function ReadyToBeSeen() {
 
             {/* 3. The Safety Net (Risk Reversal + Urgency) */}
             <div className="action-card-footer">
-              <span className="action-urgency">⏰ Closes Jan 9 — {countdownText}</span>
+              <span className="action-urgency">⏰ Extended! Closes Jan 11 — {countdownText}</span>
               <span className="action-guarantee">✦ Not selected? $50 Credit at Studio on Brunswick</span>
             </div>
           </div>
@@ -480,7 +480,7 @@ function ReadyToBeSeen() {
             <div className="timeline-step-card">
               <div className="step-number">3</div>
               <h3>Submit When Ready</h3>
-              <p>Take your time. You have until <strong>January 9</strong> to upload your 6 artworks.</p>
+              <p>Take your time. You have until <strong>January 12</strong> to upload your 6 artworks.</p>
               <p className="step-note">You do <strong>not</strong> need to have your images ready to enter today.</p>
             </div>
           </div>
@@ -509,12 +509,12 @@ function ReadyToBeSeen() {
 
             <div className={`faq-item ${openFaq === 2 ? 'open' : ''}`} onClick={() => toggleFaq(2)} onKeyDown={(e) => e.key === 'Enter' && toggleFaq(2)} role="button" tabIndex={0} aria-expanded={openFaq === 2}>
               <h3>What if I'm not ready to upload yet? <span className="faq-icon" aria-hidden="true"></span></h3>
-              <p>No problem. Once you purchase your entry, you'll have until January 9 to upload your work via your private submission link.</p>
+              <p>No problem. Once you purchase your entry, you'll have until January 12 to upload your work via your private submission link.</p>
             </div>
 
             <div className={`faq-item ${openFaq === 3 ? 'open' : ''}`} onClick={() => toggleFaq(3)} onKeyDown={(e) => e.key === 'Enter' && toggleFaq(3)} role="button" tabIndex={0} aria-expanded={openFaq === 3}>
               <h3>When will I know if I'm selected? <span className="faq-icon" aria-hidden="true"></span></h3>
-              <p>Successful applicants will be notified the Friday following the January 9 deadline.</p>
+              <p>Successful applicants will be notified the Friday following the January 11 deadline.</p>
             </div>
 
             <div className={`faq-item ${openFaq === 4 ? 'open' : ''}`} onClick={() => toggleFaq(4)} onKeyDown={(e) => e.key === 'Enter' && toggleFaq(4)} role="button" tabIndex={0} aria-expanded={openFaq === 4}>
